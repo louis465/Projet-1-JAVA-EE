@@ -3,7 +3,7 @@ public class Startgamedefenseur {
 
     Config config =new Config ();
 
-    public void displayRulesDefenseur () {
+    void displayRulesDefenseur() {
         System.out.println("Voici les régles du mode Defenseur:");
         System.out.println("1- Tu vas devoir choisir une combinaison de "+config.nbX+" chiffres.");
         System.out.println("2- L'ordinateur va tenter de deviner cette combinaison en "+config.nbTry+" essais.");
@@ -12,7 +12,7 @@ public class Startgamedefenseur {
         this.gamePlayDefenseur();
     }
 
-    public void gamePlayDefenseur() {
+    private void gamePlayDefenseur() {
         System.out.println("C'est parti !");
     }
 }

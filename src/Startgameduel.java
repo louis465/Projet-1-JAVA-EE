@@ -1,7 +1,7 @@
 public class Startgameduel {
     Config config =new Config ();
 
-    public void displayRulesDuel () {
+    void displayRulesDuel() {
         System.out.println("Voici les régles du mode Duel:");
         System.out.println("1- L'ordinateur et toi allez devoir choisir une combinaison de "+config.nbX+" chiffres.");
         System.out.println("2- Tour à tour, vous allez tenter de deviner la combinaison de l'autre en "+config.nbTry+" essais maximum.");
@@ -10,7 +10,7 @@ public class Startgameduel {
         this.gamePlayDuel();
     }
 
-    public void gamePlayDuel() {
+    private void gamePlayDuel() {
         System.out.println("C'est parti !");
     }
 }

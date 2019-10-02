@@ -2,7 +2,7 @@
 public class Startgamechallengeur {
     Config config =new Config ();
 
-    public void displayRulesChallenger () {
+    void displayRulesChallenger() {
         System.out.println("Voici les régles du mode Challenger:");
         System.out.println("1- L'ordinateur va choisir une combinaison de "+config.nbX+" chiffres.");
         System.out.println("2- Tu vas devoir tenter de deviner cette combinaison en "+config.nbTry+" essais.");
@@ -11,8 +11,11 @@ public class Startgamechallengeur {
         this.gamePlayChallenger();
     }
 
-    public void gamePlayChallenger() {
+    private void gamePlayChallenger() {
+        Gamemethodes gamemethodes = new Gamemethodes();
+        int gameMode=1;
         System.out.println("C'est parti !");
+        gamemethodes.endGameChoice(gameMode);
     }
 
 }
