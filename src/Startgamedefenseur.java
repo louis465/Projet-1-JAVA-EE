@@ -9,10 +9,14 @@ public class Startgamedefenseur {
         System.out.println("2- L'ordinateur va tenter de deviner cette combinaison en "+config.nbTry+" essais.");
         System.out.println("3- Aprés chaque tentative, tu devras indiquer à l'ordinateur pour chaque chiffre si il est =, > ou < au bon chiffre.");
         System.out.println("Si l'ordinateur ne trouve pas la solution le magot est à toi ! Si non, c'est la ruine.. Bon jeu !");
+        System.out.println("");
         this.gamePlayDefenseur();
     }
 
     private void gamePlayDefenseur() {
-        System.out.println("C'est parti !");
+        Gamemethodes gamemethodes = new Gamemethodes();
+        int gameMode=2;
+        System.out.println("C'est parti pour le mode défenseur !");
+        gamemethodes.endGameChoice(gameMode);
     }
 }

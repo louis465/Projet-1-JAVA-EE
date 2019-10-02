@@ -14,6 +14,7 @@ public class Gamemodechoice {
         System.out.println("3 - Duel");
         System.out.println("4 - Quitter");
         System.out.println("A quel mode souhaitez-vous jouer?");
+        System.out.println("");
     }
 
 

@@ -24,9 +24,10 @@ public class Gamemethodes  {
     }
     public void displayEndGameChoice () {
         System.out.println("La partie est terminée ! Que souhaitez-vous faire ? :");
-        System.out.println("1- Rejouer une partie en mode "+gamemodechoice.runGame()+".");
+        System.out.println("1- Rejouer au meme mode");
         System.out.println("2- Jouer à un autre mode.");
         System.out.println(("3- Quitter le jeu"));
+        System.out.println("");
     }
 
     public void endGameChoice (int gameMode) {
@@ -67,7 +68,7 @@ public class Gamemethodes  {
                     gamemodechoice.runGame();
                     break;
                 case 3:
-                    System.out.println("Une autre fois, au revoir");
+                    System.out.println("Merci d'avoir joué, au revoir");
                     break;
                 default:
                     System.out.println("Vous n'avez pas choisi de modes parmi ceux proposés");
