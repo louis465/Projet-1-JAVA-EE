@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class methode {
+public class Gamemodechoice {
     Scanner sc = new Scanner(System.in);
 
     /**
