@@ -47,16 +47,13 @@ public class Gamemethodes  {
                 case 1:
                     switch (gameMode) {
                         case 1:
-                            Startgamechallengeur newChall = new Startgamechallengeur();
-                            newChall.displayRulesChallenger();
+
                             break;
                         case 2:
-                            Startgamedefenseur newDef = new Startgamedefenseur();
-                            newDef.displayRulesDefenseur();
+
                             break;
                         case 3:
-                            Startgameduel newduel = new Startgameduel();
-                            newduel.displayRulesDuel();
+
                             break;
                         default:
                             System.out.println("Mode inconnu");
