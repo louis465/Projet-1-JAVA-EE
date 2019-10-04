@@ -1,5 +1,6 @@
 public class GamePlay {
-    public void chalGame (Players humanPlayer, Players IAPlayer) {
-
+    public void launchGame (Player player, Player player1) {
+        player.initGame();
+        player1.makeATry(player.initGame());
     }
 }

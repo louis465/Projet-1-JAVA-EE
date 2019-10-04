@@ -25,7 +25,9 @@ public class Gamemodechoice {
     String runGame() {
         int nbGame = 0;
         String gameMode = new String("");
-        GamePlay gamePlay = new GamePlay();
+        GamePlay launchGame = new GamePlay();
+        Player IAPlayer = new IAPlayer();
+        Player HumanPlayer = new HumanPlayer();
         do {
             this.displayAvailableGame();
             try {
@@ -47,7 +49,7 @@ public class Gamemodechoice {
                     System.out.println("3- Aprés chaque tentative, l'ordinateur te dira pour chaque chiffre si il est =, > ou < au bon chiffre");
                     System.out.println("Attention si tu ne trouves pas la solution le coffre s'autodétruira ! Bon jeu !");
                     System.out.println("");
-                    GamePlay launchGame = new GamePlay();
+                    launchGame.launchGame(IAPlayer, HumanPlayer);
                     break;
                 case 2:
                     gameMode = ("defenseur");
@@ -58,6 +60,7 @@ public class Gamemodechoice {
                     System.out.println("3- Aprés chaque tentative, tu devras indiquer à l'ordinateur pour chaque chiffre si il est =, > ou < au bon chiffre.");
                     System.out.println("Si l'ordinateur ne trouve pas la solution le magot est à toi ! Si non, c'est la ruine.. Bon jeu !");
                     System.out.println("");
+                    launchGame.launchGame(HumanPlayer, IAPlayer);
                     break;
                 case 3:
                     gameMode = ("duel");

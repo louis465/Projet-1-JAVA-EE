@@ -3,15 +3,15 @@ import java.util.Scanner;
 
     public class HumanPlayer extends Player {
         Scanner sc = new Scanner(System.in);
-        int combinaison = 0;
-        int humanTry = 0;
+        Player IAPlayer = new IAPlayer();
+        int definedCombinaison = 0;
         String upDownok = "";
         @Override
         public int initGame() {
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
             do {
                 try {
-                    combinaison = sc.nextInt();
+                    definedCombinaison = sc.nextInt();
                 } catch (InputMismatchException ime) {
                     System.out.println("Veuillez saisir un chiffre");
                     sc.next();
@@ -19,17 +19,16 @@ import java.util.Scanner;
                     System.out.println("Erreur inconnu");
                     continue;
                 }
-            } while (combinaison <=0);
-            System.out.println("La combinaison définie est "+combinaison+". Au tour de l'ordinateur !");
-            return combinaison;
+            } while (definedCombinaison <=0);
+            System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur !");
+            return definedCombinaison;
         }
         @Override
-        public void makeATry() {
-            do {
+        public int makeATry(int combinaison) {
                 int nbTry = 1;
                 int tentative = 0;
-                System.out.println("Tentative n°" + nbTry + " :");
                 do {
+                    System.out.println("Tentative n°" + nbTry + " :");
                     try {
                         tentative = sc.nextInt();
                     } catch (InputMismatchException ime) {
@@ -39,13 +38,22 @@ import java.util.Scanner;
                         System.out.println("Erreur inconnu");
                         continue;
                     }
+                    Player IAPlayer = new IAPlayer();
+                    IAPlayer.tellUpDownOk(tentative);
+                    nbTry ++;
                 } while (String.valueOf(tentative).length() < String.valueOf(combinaison).length() || tentative == combinaison)
                         ;
+                if (String.valueOf(tentative).length() == String.valueOf(combinaison).length()) {
+                    System.out.println("Dsl, t'es mauvais Jack ! ");
+                } else {
+                    System.out.println("Bravo, c'est gagné !");
+                }
+            return combinaison;
             }
-        }
+
 
         @Override
-        public void tellUpDownOk(int combinaison) {
+        public void tellUpDownOk(int tentative) {
 
         }
     }
