@@ -47,10 +47,7 @@ public class Gamemodechoice {
                     System.out.println("3- Aprés chaque tentative, l'ordinateur te dira pour chaque chiffre si il est =, > ou < au bon chiffre");
                     System.out.println("Attention si tu ne trouves pas la solution le coffre s'autodétruira ! Bon jeu !");
                     System.out.println("");
-                    GamePlay chalGame = new GamePlay();
-                    String attacker = "human";
-                    String defender = "IA";
-                    chalGame.chalGame (attacker, defender);
+                    GamePlay launchGame = new GamePlay();
                     break;
                 case 2:
                     gameMode = ("defenseur");

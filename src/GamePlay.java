@@ -1,5 +1,5 @@
 public class GamePlay {
-    public void chalGame (String X, String Y) {
+    public void chalGame (Players humanPlayer, Players IAPlayer) {
 
     }
 }
