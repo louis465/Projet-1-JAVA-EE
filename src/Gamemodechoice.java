@@ -35,7 +35,7 @@ public class Gamemodechoice {
                 sc.next();
                 continue;
             } catch (Exception e) {
-                System.out.println("Erreur inconnu");
+                System.out.println("Erreur inconnue");
             }
             switch (nbGame) {
                 case 1:
@@ -47,7 +47,10 @@ public class Gamemodechoice {
                     System.out.println("3- Aprés chaque tentative, l'ordinateur te dira pour chaque chiffre si il est =, > ou < au bon chiffre");
                     System.out.println("Attention si tu ne trouves pas la solution le coffre s'autodétruira ! Bon jeu !");
                     System.out.println("");
-
+                    GamePlay chalGame = new GamePlay();
+                    String attacker = "human";
+                    String defender = "IA";
+                    chalGame.chalGame (attacker, defender);
                     break;
                 case 2:
                     gameMode = ("defenseur");
