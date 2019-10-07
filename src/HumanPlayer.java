@@ -70,17 +70,38 @@ import java.util.Scanner;
 
         @Override
         public String tellUpDownOk(int tentative, int definedCombinaison) {
-            System.out.println("A votre tour (+-=):");
             String answer = "";
-            try {
-                answer = sc.nextLine();
-            } catch (InputMismatchException ime) {
-                System.out.println("Veuillez saisir les bons symboles");
-                sc.nextLine();
-            } catch (Exception e) {
-                System.out.println("Erreur inconnu");
+            String strTentative = String.valueOf(tentative);
+            String strDefinedCombinaison = String.valueOf(definedCombinaison);
+            for (int i = 0 ; i < strTentative.length(); i++) {
+                int testedTentativeNumber = Integer.parseInt(String.valueOf(strTentative.charAt(i)));
+                int testedDefinedNumber = Integer.parseInt(String.valueOf(strDefinedCombinaison.charAt(i)));
+                if (testedTentativeNumber<testedDefinedNumber) {
+                    answer += "<";
+                } else if (testedTentativeNumber>testedDefinedNumber) {
+                    answer +=">";
+                } else {
+                    answer += "=";
+                }
             }
             System.out.println(answer);
-            return answer;
+            System.out.println("A votre tour (+-=):");
+            String humananswer = "";
+            do {
+                try {
+                    answer = sc.nextLine();
+                } catch (InputMismatchException ime) {
+                    System.out.println("Veuillez saisir les bons symboles");
+                    sc.nextLine();
+                    continue;
+                } catch (Exception e) {
+                    System.out.println("Erreur inconnue");
+                    continue;
+                }
+                if (humananswer.compareTo(answer) != 0) {
+                    System.out.println("Hum, êtes-vous sûr de votre réponse ? ");
+                }
+            } while (humananswer.compareTo(answer) != 0);
+            return humananswer;
         }
     }

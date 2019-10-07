@@ -37,38 +37,23 @@ public class IAPlayer extends Player {
     }
 
     @Override
-    public int makeATry(int combinaison, int combiSize, int nbGame) {
+    public int makeATry(int definedCombinaison, int combiSize, int nbGame) {
         int nbTry = 1;
         int tentative = 0;
+        double tentativeInit;
         String answer = "";
             System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
-            double tentativeinit = Math.random()*(Math.pow(10,combiSize));
-            tentative = (int)tentativeinit;
+        do {
+            tentativeInit = Math.random() * (Math.pow(10, combiSize));
+            tentative = (int) tentativeInit;
+        } while (String.valueOf(tentative).length() != combiSize);
             System.out.println(tentative);
             humanPlayer.tellUpDownOk(tentative, definedCombinaison);
-            answer = sc.nextLine();
             nbTry ++;
-            do {
-                    String stringTentative = String.valueOf(tentative);
-                    String newTentative = "";
-                    int chiffre = 0;
-                    for (int i = 0; i<answer.length(); i++) {
-                        String symbole = String.valueOf(answer.charAt(i));
-                        switch (symbole){
-                            case "=":
-                                newTentative += String.valueOf(stringTentative.charAt(i))   ;
-                                break;
-                            case ">":
-                            Integer.valueOf(String.valueOf(stringTentative.charAt(i)));
-                        }
-                    }
-
-
-            } while (String.valueOf(tentative).length() < String.valueOf(combinaison).length() || tentative == combinaison);
 
         GameEndChoice gameEndChoice = new GameEndChoice();
         gameEndChoice.endGameChoice(nbGame);
-        return combinaison;
+        return definedCombinaison;
     }
 
     @Override
