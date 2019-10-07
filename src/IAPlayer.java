@@ -5,7 +5,7 @@ public class IAPlayer extends Player {
     Scanner sc = new Scanner(System.in);
     Player humanPlayer = new HumanPlayer();
     int combiSize = 4;
-    int nbmaxTry = combiSize*2;
+    int nbmaxTry = 8;
     double combinaisonInit;
     int definedCombinaison = 0;
     int humanTry = 0;
@@ -23,20 +23,23 @@ public class IAPlayer extends Player {
                 continue;
             }
         } while (combiSize <=1);
-        combinaisonInit = Math.random()*(10^combiSize);
+        combinaisonInit = Math.random()*(Math.pow(10,combiSize));
         definedCombinaison = (int)combinaisonInit;
-        System.out.println("Vous allez devoir trouver une combinaison de "+combiSize+" en "+nbmaxTry+" essais");
+        nbmaxTry = combiSize *2;
+        System.out.println("Vous allez devoir trouver une combinaison de "+ combiSize +" chiffre en "+nbmaxTry+" essais");
+        System.out.println(definedCombinaison);
+        System.out.println(combinaisonInit);
+        humanPlayer.makeATry(definedCombinaison, combiSize);
         return definedCombinaison;
     }
 
     @Override
-    public int makeATry(int combinaison) {
+    public int makeATry(int combinaison, int combiSize) {
         int nbTry = 1;
         int tentative = 0;
-        int humanCombiSize = String.valueOf(tentative).length();
         String answer = "";
             System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
-            double tentativeinit = Math.random()*(10^humanCombiSize);
+            double tentativeinit = Math.random()*(Math.pow(10,combiSize));
             tentative = (int)tentativeinit;
             System.out.println(tentative);
             humanPlayer.tellUpDownOk(tentative);
@@ -65,7 +68,8 @@ public class IAPlayer extends Player {
     }
 
     @Override
-    public void tellUpDownOk( int combinaison) {
+    public void tellUpDownOk( int tentative) {
+        System.out.println("Méthode tellupdonewok");
 
     }
 }

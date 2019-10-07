@@ -3,11 +3,11 @@ import java.util.Scanner;
 
     public class HumanPlayer extends Player {
         Scanner sc = new Scanner(System.in);
-        Player IAPlayer = new IAPlayer();
         int definedCombinaison = 0;
         String upDownok = "";
         @Override
         public int initGame() {
+            Player IAPlayer = new IAPlayer();
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
             do {
                 try {
@@ -20,14 +20,20 @@ import java.util.Scanner;
                     continue;
                 }
             } while (definedCombinaison <=0);
+            int combiSize = String.valueOf(definedCombinaison).length();
+            System.out.println(combiSize);
             System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur !");
+            IAPlayer.makeATry(definedCombinaison,combiSize);
             return definedCombinaison;
         }
         @Override
-        public int makeATry(int combinaison) {
+        public int makeATry(int definedcombinaison, int combiSize) {
+                Player IAPlayer = new IAPlayer();
                 int nbTry = 1;
                 int tentative = 0;
+                int nbTryMax = combiSize*2;
                 do {
+                    System.out.println(nbTryMax);
                     System.out.println("Tentative n°" + nbTry + " :");
                     try {
                         tentative = sc.nextInt();
@@ -38,22 +44,23 @@ import java.util.Scanner;
                         System.out.println("Erreur inconnu");
                         continue;
                     }
-                    Player IAPlayer = new IAPlayer();
                     IAPlayer.tellUpDownOk(tentative);
                     nbTry ++;
-                } while (String.valueOf(tentative).length() < String.valueOf(combinaison).length() || tentative == combinaison)
+                    // faire une deuxiéme bouvle pour le controle de la saisie :
+                    // String.valueOf(tentative).length() < String.valueOf(definedcombinaison).length()
+                } while ( nbTry >= nbTryMax || tentative != definedcombinaison)
                         ;
-                if (String.valueOf(tentative).length() == String.valueOf(combinaison).length()) {
-                    System.out.println("Dsl, t'es mauvais Jack ! ");
-                } else {
+                if (tentative == definedcombinaison) {
                     System.out.println("Bravo, c'est gagné !");
+                } else {
+                    System.out.println("Dsl, t'es mauvais Jack !");
                 }
-            return combinaison;
+            return definedcombinaison;
             }
 
 
         @Override
         public void tellUpDownOk(int tentative) {
-
+            System.out.println("Human Méthode tellupdownok");
         }
     }

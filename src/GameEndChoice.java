@@ -1,27 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Gamemethodes  {
+public class GameEndChoice {
     Config config =new Config ();
     Scanner sc = new Scanner(System.in);
     int nbX = config.nbX;
     Gamemodechoice gamemodechoice = new Gamemodechoice();
 
-    public void initGameByIA () {
-
-    }
-
-    public void initGameByPlayer() {
-
-    }
-
-    public void startGameIA () {
-
-    }
-
-    public void startGamePlayer () {
-
-    }
     public void displayEndGameChoice () {
         System.out.println("La partie est terminée ! Que souhaitez-vous faire ? :");
         System.out.println("1- Rejouer au meme mode");
