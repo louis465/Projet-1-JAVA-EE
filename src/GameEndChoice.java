@@ -2,10 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameEndChoice {
-    Config config =new Config ();
     Scanner sc = new Scanner(System.in);
-    int nbX = config.nbX;
-    Gamemodechoice gamemodechoice = new Gamemodechoice();
 
     public void displayEndGameChoice () {
         System.out.println("La partie est terminée ! Que souhaitez-vous faire ? :");
@@ -15,7 +12,7 @@ public class GameEndChoice {
         System.out.println("");
     }
 
-    public void endGameChoice (int gameMode) {
+    public void endGameChoice (int nbGame) {
         int nbChoice = 0;
         do {
             this.displayEndGameChoice();
@@ -30,15 +27,17 @@ public class GameEndChoice {
             }
             switch (nbChoice) {
                 case 1:
-                    switch (gameMode) {
+                    switch (nbGame) {
                         case 1:
-
+                            IAPlayer iAPlayer = new IAPlayer();
+                            iAPlayer.initGame(nbGame);
                             break;
                         case 2:
-
+                            HumanPlayer humanPlayer = new HumanPlayer();
+                            humanPlayer.initGame(nbGame);
                             break;
                         case 3:
-
+                            System.out.println("A voir plus tard");
                             break;
                         default:
                             System.out.println("Mode inconnu");
@@ -58,5 +57,6 @@ public class GameEndChoice {
             }
         } while (nbChoice < 1 || nbChoice > 3) ;
     }
+
 
 }

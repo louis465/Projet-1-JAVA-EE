@@ -6,7 +6,7 @@ import java.util.Scanner;
         int definedCombinaison = 0;
         String upDownok = "";
         @Override
-        public int initGame() {
+        public int initGame(int nbGame) {
             Player IAPlayer = new IAPlayer();
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
             do {
@@ -23,44 +23,61 @@ import java.util.Scanner;
             int combiSize = String.valueOf(definedCombinaison).length();
             System.out.println(combiSize);
             System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur !");
-            IAPlayer.makeATry(definedCombinaison,combiSize);
+            System.out.println(definedCombinaison);
+            IAPlayer.makeATry(definedCombinaison,combiSize, nbGame);
             return definedCombinaison;
         }
         @Override
-        public int makeATry(int definedcombinaison, int combiSize) {
+        public int makeATry(int definedCombinaison, int combiSize, int nbGame) {
                 Player IAPlayer = new IAPlayer();
                 int nbTry = 1;
                 int tentative = 0;
                 int nbTryMax = combiSize*2;
                 do {
-                    System.out.println(nbTryMax);
                     System.out.println("Tentative n°" + nbTry + " :");
                     try {
                         tentative = sc.nextInt();
                     } catch (InputMismatchException ime) {
                         System.out.println("Veuillez saisir un chiffre");
                         sc.next();
+                        continue;
                     } catch (Exception e) {
                         System.out.println("Erreur inconnu");
+                        sc.next();
                         continue;
                     }
-                    IAPlayer.tellUpDownOk(tentative);
                     nbTry ++;
-                    // faire une deuxiéme bouvle pour le controle de la saisie :
+                    System.out.println(tentative);
+                    System.out.println(nbTryMax);
+                    IAPlayer.tellUpDownOk(tentative);
+                    // faire une deuxiéme boucle pour le controle de la saisie :
                     // String.valueOf(tentative).length() < String.valueOf(definedcombinaison).length()
-                } while ( nbTry >= nbTryMax || tentative != definedcombinaison)
-                        ;
-                if (tentative == definedcombinaison) {
+                } while ( tentative != definedCombinaison || nbTry <= nbTryMax);
+
+                if (tentative == definedCombinaison) {
                     System.out.println("Bravo, c'est gagné !");
                 } else {
                     System.out.println("Dsl, t'es mauvais Jack !");
                 }
-            return definedcombinaison;
+                GameEndChoice gameEndChoice = new GameEndChoice();
+                gameEndChoice.endGameChoice(nbGame);
+            return definedCombinaison;
             }
 
 
         @Override
-        public void tellUpDownOk(int tentative) {
-            System.out.println("Human Méthode tellupdownok");
+        public String tellUpDownOk(int tentative) {
+            System.out.println("A votre tour (+-=):");
+            String answer = "";
+            try {
+                answer = sc.next();
+            } catch (InputMismatchException ime) {
+                System.out.println("Veuillez saisir les bons symboles");
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.println("Erreur inconnu");
+            }
+            System.out.println(answer);
+            return answer;
         }
     }

@@ -10,7 +10,7 @@ public class IAPlayer extends Player {
     int definedCombinaison = 0;
     int humanTry = 0;
     @Override
-    public int initGame() {
+    public int initGame(int nbGame) {
         System.out.println("Quel est la taille de la combinaison que vous souhaitez trouver ?  ");
         do {
             try {
@@ -28,13 +28,12 @@ public class IAPlayer extends Player {
         nbmaxTry = combiSize *2;
         System.out.println("Vous allez devoir trouver une combinaison de "+ combiSize +" chiffre en "+nbmaxTry+" essais");
         System.out.println(definedCombinaison);
-        System.out.println(combinaisonInit);
-        humanPlayer.makeATry(definedCombinaison, combiSize);
+        humanPlayer.makeATry(definedCombinaison, combiSize, nbGame);
         return definedCombinaison;
     }
 
     @Override
-    public int makeATry(int combinaison, int combiSize) {
+    public int makeATry(int combinaison, int combiSize, int nbGame) {
         int nbTry = 1;
         int tentative = 0;
         String answer = "";
@@ -63,13 +62,16 @@ public class IAPlayer extends Player {
 
             } while (String.valueOf(tentative).length() < String.valueOf(combinaison).length() || tentative == combinaison);
 
-
+        GameEndChoice gameEndChoice = new GameEndChoice();
+        gameEndChoice.endGameChoice(nbGame);
         return combinaison;
     }
 
     @Override
-    public void tellUpDownOk( int tentative) {
-        System.out.println("Méthode tellupdonewok");
-
+    public String tellUpDownOk( int tentative) {
+        String answer = "test reponse";
+        System.out.println(answer);
+    return answer;
     }
+
 }
