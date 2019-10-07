@@ -33,27 +33,30 @@ import java.util.Scanner;
                 int nbTry = 1;
                 int tentative = 0;
                 int nbTryMax = combiSize*2;
-                do {
-                    System.out.println("Tentative n°" + nbTry + " :");
-                    try {
-                        tentative = sc.nextInt();
-                    } catch (InputMismatchException ime) {
-                        System.out.println("Veuillez saisir un chiffre");
-                        sc.next();
-                        continue;
-                    } catch (Exception e) {
-                        System.out.println("Erreur inconnu");
-                        sc.next();
-                        continue;
-                    }
-                    nbTry ++;
-                    System.out.println(tentative);
-                    System.out.println(nbTryMax);
-                    IAPlayer.tellUpDownOk(tentative);
-                    // faire une deuxiéme boucle pour le controle de la saisie :
-                    // String.valueOf(tentative).length() < String.valueOf(definedcombinaison).length()
-                } while ( tentative != definedCombinaison || nbTry <= nbTryMax);
-
+                    do {
+                        do {
+                            System.out.println("Tentative n°" + nbTry + " :");
+                            try {
+                                tentative = sc.nextInt();
+                            } catch (InputMismatchException ime) {
+                                System.out.println("Veuillez saisir un chiffre");
+                                sc.next();
+                                continue;
+                            } catch (Exception e) {
+                                System.out.println("Erreur inconnu");
+                                sc.next();
+                                continue;
+                            }
+                            if (String.valueOf(tentative).length() != String.valueOf(definedCombinaison).length()) {
+                                System.out.println("Veuillez saisir une combinaison valide");
+                            }
+                        } while (String.valueOf(tentative).length() != String.valueOf(definedCombinaison).length());
+                        nbTry++;
+                        IAPlayer.tellUpDownOk(tentative, definedCombinaison);
+                        if (tentative == definedCombinaison) {
+                            break;
+                        }
+                    } while (nbTry <= nbTryMax );
                 if (tentative == definedCombinaison) {
                     System.out.println("Bravo, c'est gagné !");
                 } else {
@@ -66,11 +69,11 @@ import java.util.Scanner;
 
 
         @Override
-        public String tellUpDownOk(int tentative) {
+        public String tellUpDownOk(int tentative, int definedCombinaison) {
             System.out.println("A votre tour (+-=):");
             String answer = "";
             try {
-                answer = sc.next();
+                answer = sc.nextLine();
             } catch (InputMismatchException ime) {
                 System.out.println("Veuillez saisir les bons symboles");
                 sc.nextLine();

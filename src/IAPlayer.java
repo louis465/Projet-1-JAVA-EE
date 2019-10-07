@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,13 +19,16 @@ public class IAPlayer extends Player {
             } catch (InputMismatchException ime) {
                 System.out.println("Veuillez saisir un chiffre");
                 sc.next();
+                continue;
             } catch (Exception e) {
                 System.out.println("Erreur inconnu");
                 continue;
             }
         } while (combiSize <=1);
-        combinaisonInit = Math.random()*(Math.pow(10,combiSize));
-        definedCombinaison = (int)combinaisonInit;
+        do {
+            combinaisonInit = Math.random() * (Math.pow(10, combiSize));
+            definedCombinaison = (int) combinaisonInit;
+        } while (String.valueOf(definedCombinaison).length() != combiSize);
         nbmaxTry = combiSize *2;
         System.out.println("Vous allez devoir trouver une combinaison de "+ combiSize +" chiffre en "+nbmaxTry+" essais");
         System.out.println(definedCombinaison);
@@ -41,7 +45,7 @@ public class IAPlayer extends Player {
             double tentativeinit = Math.random()*(Math.pow(10,combiSize));
             tentative = (int)tentativeinit;
             System.out.println(tentative);
-            humanPlayer.tellUpDownOk(tentative);
+            humanPlayer.tellUpDownOk(tentative, definedCombinaison);
             answer = sc.nextLine();
             nbTry ++;
             do {
@@ -68,8 +72,21 @@ public class IAPlayer extends Player {
     }
 
     @Override
-    public String tellUpDownOk( int tentative) {
-        String answer = "test reponse";
+    public String tellUpDownOk( int tentative, int definedCombinaison) {
+        String answer = "";
+        String strTentative = String.valueOf(tentative);
+        String strDefinedCombinaison = String.valueOf(definedCombinaison);
+        for (int i = 0 ; i < strTentative.length(); i++) {
+            int testedTentativeNumber = Integer.parseInt(String.valueOf(strTentative.charAt(i)));
+            int testedDefinedNumber = Integer.parseInt(String.valueOf(strDefinedCombinaison.charAt(i)));
+            if (testedTentativeNumber<testedDefinedNumber) {
+                answer += "<";
+            } else if (testedTentativeNumber>testedDefinedNumber) {
+                answer +=">";
+            } else {
+                answer += "=";
+            }
+        }
         System.out.println(answer);
     return answer;
     }

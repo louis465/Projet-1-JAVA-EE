@@ -38,6 +38,7 @@ public class Gamemodechoice {
                 continue;
             } catch (Exception e) {
                 System.out.println("Erreur inconnue");
+                continue;
             }
             switch (nbGame) {
                 case 1:
