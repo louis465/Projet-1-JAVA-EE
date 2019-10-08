@@ -1,8 +1,9 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Gamemodechoice {
+public class Gamechoice {
     Scanner sc = new Scanner(System.in);
+    GameMethode gameMethode = new GameMethode();
 
     /**
      * Display all available game type.
@@ -30,16 +31,7 @@ public class Gamemodechoice {
         Player HumanPlayer = new HumanPlayer();
         do {
             this.displayAvailableGame();
-            try {
-                nbGame = sc.nextInt();
-            } catch (InputMismatchException ime) {
-                System.out.println("Veuillez saisir un chiffre");
-                sc.next();
-                continue;
-            } catch (Exception e) {
-                System.out.println("Erreur inconnue");
-                continue;
-            }
+            nbGame = gameMethode.scanAnInt();
             switch (nbGame) {
                 case 1:
                     gameMode = ("challenger");
@@ -82,5 +74,50 @@ public class Gamemodechoice {
             }
         } while (nbGame < 1 || nbGame > 4);
         return gameMode;
+    }
+
+    public void displayEndGameChoice () {
+        System.out.println("La partie est terminée ! Que souhaitez-vous faire ? :");
+        System.out.println("1- Rejouer au meme mode");
+        System.out.println("2- Jouer à un autre mode.");
+        System.out.println(("3- Quitter le jeu"));
+        System.out.println("");
+    }
+
+    public void endGameChoice (int nbGame) {
+        int nbChoice = 0;
+        do {
+            this.displayEndGameChoice();
+            nbChoice = gameMethode.scanAnInt();
+            switch (nbChoice) {
+                case 1:
+                    switch (nbGame) {
+                        case 1:
+                            IAPlayer iAPlayer = new IAPlayer();
+                            iAPlayer.initGame(nbGame);
+                            break;
+                        case 2:
+                            HumanPlayer humanPlayer = new HumanPlayer();
+                            humanPlayer.initGame(nbGame);
+                            break;
+                        case 3:
+                            System.out.println("A voir plus tard");
+                            break;
+                        default:
+                            System.out.println("Mode inconnu");
+                            break;
+                    }
+                    break;
+                case 2:
+                    this.runGame();
+                    break;
+                case 3:
+                    System.out.println("Merci d'avoir joué, au revoir");
+                    break;
+                default:
+                    System.out.println("Vous n'avez pas choisi de modes parmi ceux proposés");
+                    break;
+            }
+        } while (nbChoice < 1 || nbChoice > 3) ;
     }
 }
