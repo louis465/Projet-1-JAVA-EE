@@ -89,7 +89,7 @@ import java.util.Scanner;
             String humananswer = "";
             do {
                 try {
-                    answer = sc.nextLine();
+                    humananswer = sc.nextLine();
                 } catch (InputMismatchException ime) {
                     System.out.println("Veuillez saisir les bons symboles");
                     sc.nextLine();
@@ -98,10 +98,10 @@ import java.util.Scanner;
                     System.out.println("Erreur inconnue");
                     continue;
                 }
-                if (humananswer.compareTo(answer) != 0) {
+                if (humananswer.equals(answer) != true) {
                     System.out.println("Hum, êtes-vous sûr de votre réponse ? ");
                 }
-            } while (humananswer.compareTo(answer) != 0);
+            } while (humananswer.equals(answer) != true);
             return humananswer;
         }
     }

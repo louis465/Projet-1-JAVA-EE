@@ -41,6 +41,7 @@ public class IAPlayer extends Player {
         int nbTry = 1;
         int tentative = 0;
         double tentativeInit;
+        int nbTryMax= combiSize*2;
         String answer = "";
             System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
         do {
@@ -48,9 +49,44 @@ public class IAPlayer extends Player {
             tentative = (int) tentativeInit;
         } while (String.valueOf(tentative).length() != combiSize);
             System.out.println(tentative);
-            humanPlayer.tellUpDownOk(tentative, definedCombinaison);
+        do {
+            String humanAnswer = humanPlayer.tellUpDownOk(tentative, definedCombinaison);
+            System.out.println(humanAnswer);
             nbTry ++;
-
+            int newTentative = 0;
+            System.out.println("Tentative n°" + nbTry + " :");
+            for (int i =0 ; i< combiSize; i++) {
+                if (String.valueOf(humanAnswer.charAt(i)).equals("=") ) {
+                    newTentative += Integer.parseInt(String.valueOf(String.valueOf(tentative).charAt(i)));
+                } else if (String.valueOf(humanAnswer.charAt(i)).equals("<") ) {
+                    double newNumberInit;
+                    int newNumber = 0;
+                    do {
+                        newNumberInit = Math.random() * (Math.pow(10, combiSize));
+                        newNumber = (int) newNumberInit;
+                    } while (newNumber < Integer.parseInt(String.valueOf(String.valueOf(tentative).charAt(i))));
+                    newTentative += newNumber;
+                } else  {
+                    double newNumberInit;
+                    int newNumber = 0;
+                    do {
+                        newNumberInit = Math.random() * (Math.pow(10, combiSize));
+                        newNumber = (int) newNumberInit;
+                    } while (newNumber > Integer.parseInt(String.valueOf(String.valueOf(tentative).charAt(i))));
+                    newTentative += newNumber;
+                }
+            }
+            tentative = newTentative;
+            System.out.println(tentative);
+            if (tentative == definedCombinaison) {
+                break;
+            }
+        } while (nbTry <= nbTryMax );
+        if (tentative != definedCombinaison) {
+            System.out.println("Bravo, c'est gagné !");
+        } else {
+            System.out.println("Dsl, t'es mauvais Jack !");
+        }
         GameEndChoice gameEndChoice = new GameEndChoice();
         gameEndChoice.endGameChoice(nbGame);
         return definedCombinaison;
