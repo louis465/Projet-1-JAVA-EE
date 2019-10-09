@@ -12,7 +12,7 @@ public class IAPlayer extends Player {
     int nbmaxTry = config.nbTry;
 
     @Override
-    public String initGame(int nbGame) {
+    public int [] initGame(int nbGame) {
         String definedCombinaison = "";
         System.out.println("Quel est la taille de la combinaison que vous souhaitez trouver ?  ");
         do {
@@ -24,14 +24,16 @@ public class IAPlayer extends Player {
         if ( config.developerMode ) {
             System.out.println(definedCombinaison);
         }
-        humanPlayer.makeATry(definedCombinaison, combiSize, nbGame);
-        return definedCombinaison;
+        int intDefinedComibinaison = Integer.parseInt(definedCombinaison);
+        int parametresMakeATry [] = {intDefinedComibinaison,combiSize,nbGame};
+        return parametresMakeATry;
     }
 
     @Override
-    public String makeATry(String definedCombinaison, int combiSize, int nbGame) {
+    public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame) {
         int nbTry = 1;
         int nbTryMax= combiSize*2;
+        String definedCombinaison = String.valueOf(intDefinedCombinaison);
         System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
         String tentative = gameMethode.setRandomCombinaison(combiSize);
         System.out.println(tentative);
@@ -52,7 +54,10 @@ public class IAPlayer extends Player {
             System.out.println("C'est gagné ! L'ordinateur n'a pas trouvé la combinaison");
         }
         gameEndChoice.endGameChoice(nbGame);
-        return definedCombinaison;
+        String strNbTry = String.valueOf(nbTry);
+        String strNbTryMax = String.valueOf((nbTryMax));
+        String ForTellUpDownOk [] = {tentative,definedCombinaison, strNbTry, strNbTryMax };
+        return ForTellUpDownOk;
     }
 
     @Override
