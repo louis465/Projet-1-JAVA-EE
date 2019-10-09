@@ -34,7 +34,6 @@ class GameMethode {
                 answer += "=";
             }
         }
-        System.out.println(answer);
         return answer;
     }
 

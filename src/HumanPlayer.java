@@ -10,7 +10,7 @@ import java.util.Scanner;
         int nbmaxTry = config.nbTry;
 
         @Override
-        public int[] initGame(int nbGame) {
+        public int[] initGame(int nbGame, int combiSize) {
             Player IAPlayer = new IAPlayer();
             int intDefinedCombinaison =0;
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
@@ -25,28 +25,28 @@ import java.util.Scanner;
             return parametres;
         }
         @Override
-        public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame) {
+        public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame, int nbTry, String answer, String oldTentative) {
             Player IAPlayer = new IAPlayer();
-            int nbTry = 1;
             int nbTryMax = combiSize*2;
             int tentative = 0;
             definedCombinaison = String.valueOf(intDefinedCombinaison);
+            System.out.println("Votre tentative n°" + nbTry + " :");
             do {
                 tentative = gameMethode.scanAnInt();
                 if (String.valueOf(tentative).length() != definedCombinaison.length()) {
                     System.out.println("Veuillez saisir une combinaison avec le bon nombre de chiffre");
                 }
             } while (String.valueOf(tentative).length() != definedCombinaison.length());
+            nbTry++;
             String strNbTry = String.valueOf(nbTry);
             String strNbTryMax = String.valueOf((nbTryMax));
             String ForTellUpDownOk [] = {String.valueOf(tentative),definedCombinaison, strNbTry, strNbTryMax };
-            System.out.println(nbTry + "  " + nbTryMax);
         return ForTellUpDownOk;
             }
 
 
         @Override
-        public String tellUpDownOk(String tentative, String definedCombinaison) {
+        public String [] tellUpDownOk(String tentative, String definedCombinaison) {
             String answer = gameMethode.comparingCombi(tentative, definedCombinaison);
             String humananswer = "";
             System.out.println("A votre tour (+-=):");
@@ -56,6 +56,7 @@ import java.util.Scanner;
                     System.out.println("Hum, êtes-vous sûr de votre réponse ? ");
                 }
             } while (humananswer.equals(answer) != true);
-            return humananswer;
+            String returnTellUpDownOk [] = {humananswer, tentative};
+            return returnTellUpDownOk;
         }
     }

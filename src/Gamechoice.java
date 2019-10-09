@@ -24,11 +24,11 @@ public class Gamechoice {
      * @return gameMode selected
      */
     String runGame() {
-        int nbGame = 0;
-        String gameMode = new String("");
         GamePlay launchGame = new GamePlay();
         Player IAPlayer = new IAPlayer();
         Player HumanPlayer = new HumanPlayer();
+        int nbGame = 0;
+        String gameMode = new String("");
         do {
             this.displayAvailableGame();
             nbGame = gameMethode.scanAnInt();
@@ -64,6 +64,7 @@ public class Gamechoice {
                     System.out.println("3- Aprés chaque tentative, tu devras indiquer à l'ordinateur pour chaque chiffre si il est =, > ou < au bon chiffre. Il fera de meme.");
                     System.out.println("Que le meilleur gagne ! Bon jeu !");
                     System.out.println("");
+                    launchGame.launchGame(IAPlayer, HumanPlayer, nbGame);
                     break;
                 case 4:
                     System.out.println("Une autre fois, au revoir");
@@ -85,6 +86,9 @@ public class Gamechoice {
     }
 
     public void endGameChoice (int nbGame) {
+        GamePlay launchGame = new GamePlay();
+        Player IAPlayer = new IAPlayer();
+        Player HumanPlayer = new HumanPlayer();
         int nbChoice = 0;
         do {
             this.displayEndGameChoice();
@@ -93,15 +97,13 @@ public class Gamechoice {
                 case 1:
                     switch (nbGame) {
                         case 1:
-                            IAPlayer iAPlayer = new IAPlayer();
-                            iAPlayer.initGame(nbGame);
+                            launchGame.launchGame(IAPlayer, HumanPlayer, 1);
                             break;
                         case 2:
-                            HumanPlayer humanPlayer = new HumanPlayer();
-                            humanPlayer.initGame(nbGame);
+                            launchGame.launchGame(HumanPlayer, IAPlayer, 2);
                             break;
                         case 3:
-                            System.out.println("A voir plus tard");
+                            launchGame.launchGame(IAPlayer, HumanPlayer, 3);
                             break;
                         default:
                             System.out.println("Mode inconnu");
