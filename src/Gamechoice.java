@@ -20,7 +20,7 @@ public class Gamechoice {
 
 
     /**
-     * Run asking process for a Game.
+     * Run asking process for a Game mode.
      * @return gameMode selected
      */
     String runGame() {
@@ -77,6 +77,9 @@ public class Gamechoice {
         return gameMode;
     }
 
+    /**
+     * display end game choices
+     */
     public void displayEndGameChoice () {
         System.out.println("La partie est terminée ! Que souhaitez-vous faire ? :");
         System.out.println("1- Rejouer au meme mode");
@@ -85,6 +88,10 @@ public class Gamechoice {
         System.out.println("");
     }
 
+    /**
+     * rue asking process for end game choice
+     * @param nbGame
+     */
     public void endGameChoice (int nbGame) {
         GamePlay launchGame = new GamePlay();
         Player IAPlayer = new IAPlayer();

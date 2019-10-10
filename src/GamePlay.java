@@ -1,4 +1,11 @@
 public class GamePlay {
+
+    /**
+     * start a new game depending on game mode, attacker and defender
+     * @param defenseur
+     * @param attaquant
+     * @param nbGame
+     */
     public void launchGame(Player defenseur, Player attaquant, int nbGame) {
         switch (nbGame) {
             case 1:
@@ -17,11 +24,16 @@ public class GamePlay {
         gameEndChoice.endGameChoice(nbGame);
     }
 
+    /**
+     * Game play Challenger mode
+     * @param defenseur
+     * @param attaquant
+     * @param nbGame
+     */
     public void challengerGamePlay (Player defenseur, Player attaquant, int nbGame) {
         String returnMakeATry [] = new String[3];
         int returnInitGame[] = defenseur.initGame(nbGame, 0);
         int nbTry = 1;
-
         do {
             returnMakeATry = attaquant.makeATry(returnInitGame[0], returnInitGame[1], returnInitGame[2], nbTry, "", "");
             defenseur.tellUpDownOk(returnMakeATry[0], returnMakeATry[1]);
@@ -37,6 +49,12 @@ public class GamePlay {
         }
     }
 
+    /**
+     * Gameplay defenseur mode
+     * @param defenseur
+     * @param attaquant
+     * @param nbGame
+     */
     public void defenseurGamePlay (Player defenseur, Player attaquant, int nbGame) {
         GameMethode gameMethode = new GameMethode();
         String returnMakeATry [] = new String[3];
@@ -61,6 +79,12 @@ public class GamePlay {
         }
     }
 
+    /**
+     * GamePlay duel mode
+     * @param defenseur
+     * @param attaquant
+     * @param nbGame
+     */
     public void duelGamePlay (Player defenseur, Player attaquant, int nbGame) {
             String humanReturnMakeATry [] = new String[3];
             String IAReturnMakeATry [] = new String [3];

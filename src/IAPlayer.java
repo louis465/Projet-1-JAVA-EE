@@ -11,6 +11,12 @@ public class IAPlayer extends Player {
     int combiSize = config.nbX;
     int nbmaxTry = config.nbTry;
 
+    /**
+     * Make IA set a new combinaison
+     * @param nbGame
+     * @param combiSize
+     * @return parametresMakeATry [] = {intDefinedComibinaison,combiSize,nbGame};
+     */
     @Override
     public int [] initGame(int nbGame, int combiSize) {
         String definedCombinaison = "";
@@ -33,26 +39,41 @@ public class IAPlayer extends Player {
         return parametresMakeATry;
     }
 
+    /**
+     * Make IA make a try according to humananswer. First it set a new random combinaison
+     * @param intDefinedCombinaison
+     * @param combiSize
+     * @param nbGame
+     * @param nbTry
+     * @param answer ==> answer from other player
+     * @param oldTentative ==> old tentative
+     * @return ForTellUpDownOk [] = {oldTentative,definedCombinaison, strNbTry, strNbTryMax };
+     */
     @Override
-    public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame, int nbTry, String answer, String tentative ) {
+    public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame, int nbTry, String answer, String oldTentative ) {
         int nbTryMax= combiSize*2;
         String definedCombinaison = String.valueOf(intDefinedCombinaison);
         System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
         if (answer.equals("") == true) {
-            tentative = gameMethode.setRandomCombinaison(definedCombinaison.length());
-            System.out.println(tentative);
+            oldTentative = gameMethode.setRandomCombinaison(definedCombinaison.length());
+            System.out.println(oldTentative);
         } else {
-            String newTentative = gameMethode.newTentativeFromAnswer(tentative, answer);
-            tentative = newTentative;
-            System.out.println(tentative);
+            String newTentative = gameMethode.newTentativeFromAnswer(oldTentative, answer);
+            oldTentative = newTentative;
+            System.out.println(oldTentative);
         }
             String strNbTry = String.valueOf(nbTry);
             String strNbTryMax = String.valueOf((nbTryMax));
-            String ForTellUpDownOk [] = {tentative,definedCombinaison, strNbTry, strNbTryMax };
+            String ForTellUpDownOk [] = {oldTentative,definedCombinaison, strNbTry, strNbTryMax };
             return ForTellUpDownOk;
         }
 
-
+    /**
+     * Make IA give answer ><= from a combinaison
+     * @param tentative
+     * @param definedCombinaison
+     * @return returnTellUpDownOk [] = {answer, tentative};
+     */
     @Override
     public String [] tellUpDownOk( String tentative, String definedCombinaison) {
         String answer = gameMethode.comparingCombi(tentative, definedCombinaison);

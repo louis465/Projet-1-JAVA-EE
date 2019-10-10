@@ -5,13 +5,24 @@ import java.util.Scanner;
 class GameMethode {
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * set a random number from a range
+     * @param min
+     * @param max
+     * @return randomNumber
+     */
     static String setRandomNumber(int min, int max) {
         Random ran = new Random();
         int x = ran.nextInt((max + 1 - min)) + min;
-        String y = String.valueOf(x);
-        return y;
+        String randomNumber = String.valueOf(x);
+        return randomNumber;
     }
 
+    /**
+     * Set a random combinaison of defined size
+     * @param size
+     * @return combi in String
+     */
     public String setRandomCombinaison(int size) {
         String strCombi = "";
         for (int i = 0; i < size; i++) {
@@ -21,6 +32,12 @@ class GameMethode {
         return strCombi;
     }
 
+    /**
+     * Compare two combinaison with ><=
+     * @param tentative
+     * @param combinaison
+     * @return answer
+     */
     public String comparingCombi(String tentative, String combinaison) {
         String answer = "";
         for (int i = 0; i < tentative.length(); i++) {
@@ -37,6 +54,10 @@ class GameMethode {
         return answer;
     }
 
+    /**
+     * Scan an int with exception gestion
+     * @return
+     */
     public int scanAnInt() {
         int intToImplement = 0;
         do {
@@ -54,6 +75,10 @@ class GameMethode {
         return intToImplement;
     }
 
+    /**
+     * Scan an String with exception gestion
+     * @return
+     */
     public String scanAnString() {
         String StrToImplement = "";
         do {
@@ -71,6 +96,12 @@ class GameMethode {
         return StrToImplement;
     }
 
+    /**
+     * set a new tentative from an answer ><=
+     * @param tentative
+     * @param answer
+     * @return newTentative
+     */
     public String newTentativeFromAnswer (String tentative, String answer) {
         String newTentative = "";
         for (int i =0 ; i< answer.length(); i++) {
@@ -82,8 +113,7 @@ class GameMethode {
                 newTentative += this.setRandomNumber(0, Integer.parseInt(String.valueOf(String.valueOf(tentative).charAt(i)))- 1);
             }
         }
-        tentative = newTentative;
-        return tentative;
+        return newTentative;
     }
 }
 

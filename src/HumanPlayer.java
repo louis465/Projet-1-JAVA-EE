@@ -9,6 +9,12 @@ import java.util.Scanner;
         int combiSize = config.nbX;
         int nbmaxTry = config.nbTry;
 
+        /**
+         * make human player set a combinaison
+         * @param nbGame
+         * @param combiSize
+         * @return parametres [] = {intDefinedCombinaison,combiSize,nbGame};
+         */
         @Override
         public int[] initGame(int nbGame, int combiSize) {
             Player IAPlayer = new IAPlayer();
@@ -24,6 +30,17 @@ import java.util.Scanner;
             int parametres [] = {intDefinedCombinaison,combiSize,nbGame};
             return parametres;
         }
+
+        /**
+         * Make human player try a combinaison
+         * @param intDefinedCombinaison
+         * @param combiSize
+         * @param nbGame
+         * @param nbTry
+         * @param answer ==> set nul for human player
+         * @param oldTentative ==> set nul for human player
+         * @return ForTellUpDownOk [] = {String.valueOf(tentative),definedCombinaison, strNbTry, strNbTryMax };
+         */
         @Override
         public String [] makeATry(int intDefinedCombinaison, int combiSize, int nbGame, int nbTry, String answer, String oldTentative) {
             Player IAPlayer = new IAPlayer();
@@ -44,7 +61,12 @@ import java.util.Scanner;
         return ForTellUpDownOk;
             }
 
-
+        /**
+         * Make human player give an answer to IA combinaison
+         * @param tentative
+         * @param definedCombinaison
+         * @return returnTellUpDownOk [] = {humananswer, tentative};
+         */
         @Override
         public String [] tellUpDownOk(String tentative, String definedCombinaison) {
             String answer = gameMethode.comparingCombi(tentative, definedCombinaison);
