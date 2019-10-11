@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Gamechoice {
     Scanner sc = new Scanner(System.in);
-    GameMethode gameMethode = new GameMethode();
 
     /**
      * Display all available game type.
@@ -31,7 +30,7 @@ public class Gamechoice {
         String gameMode = new String("");
         do {
             this.displayAvailableGame();
-            nbGame = gameMethode.scanAnInt();
+            nbGame = GameMethode.scanAnInt();
             switch (nbGame) {
                 case 1:
                     gameMode = ("challenger");
@@ -99,7 +98,7 @@ public class Gamechoice {
         int nbChoice = 0;
         do {
             this.displayEndGameChoice();
-            nbChoice = gameMethode.scanAnInt();
+            nbChoice = GameMethode.scanAnInt();
             switch (nbChoice) {
                 case 1:
                     switch (nbGame) {

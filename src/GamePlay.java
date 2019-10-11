@@ -7,106 +7,97 @@ public class GamePlay {
      * @param nbGame
      */
     public void launchGame(Player defenseur, Player attaquant, int nbGame) {
-        switch (nbGame) {
-            case 1:
-                this.challengerGamePlay(defenseur, attaquant, nbGame);
-                break;
-            case 2:
-                this.defenseurGamePlay(defenseur, attaquant, nbGame);
-                break;
-            case 3:
-                this.duelGamePlay(defenseur, attaquant, nbGame);
-                break;
-            default:
-                System.out.println("Impossible");
+        if (nbGame == 1 || nbGame == 2) {
+            this.standardGamePlay(defenseur, attaquant, nbGame);
+        } else {
+            this.duelGamePlay(defenseur, attaquant, nbGame);
         }
         Gamechoice gameEndChoice = new Gamechoice();
+        GameInfo gameInfo = new GameInfo ("", 0, nbGame);
         gameEndChoice.endGameChoice(nbGame);
     }
 
-    /**
-     * Game play Challenger mode
-     * @param defenseur
-     * @param attaquant
-     * @param nbGame
-     */
-    public void challengerGamePlay (Player defenseur, Player attaquant, int nbGame) {
-        String returnMakeATry [] = new String[3];
-        int returnInitGame[] = defenseur.initGame(nbGame, 0);
-        int nbTry = 1;
+    public void standardGamePlay  (Player defenseur, Player attaquant, int nbGame){
+        GameInfo gameInfo = defenseur.initGame(nbGame, 0 );
+        int nbTryMax = gameInfo.getCombiSize()*2;
+        int nbTry = gameInfo.getNbTry();
         do {
-            returnMakeATry = attaquant.makeATry(returnInitGame[0], returnInitGame[1], returnInitGame[2], nbTry, "", "");
-            defenseur.tellUpDownOk(returnMakeATry[0], returnMakeATry[1]);
+            attaquant.makeATry(gameInfo);
+            defenseur.tellUpDownOk(gameInfo);
+            String answer = gameInfo.getAnswer();
+            System.out.println("La réponse du défenseur: "+ answer);
             nbTry ++;
-            if (returnMakeATry[0].equals(returnMakeATry[1]) == true) {
+            gameInfo.setNbTry(nbTry);
+            if (gameInfo.getTentative().equals(gameInfo.getDefinedCombinaison())) {
                 break;
             }
-        } while (Integer.parseInt(returnMakeATry[2]) <= Integer.parseInt(returnMakeATry[3]));
-        if (returnMakeATry[0].equals(returnMakeATry[1]) == true) {
-            System.out.println("Bravo, c'est gagné !");
+        } while (nbTry <= nbTryMax);
+
+        if (gameInfo.getTentative().equals(gameInfo.getDefinedCombinaison())) {
+            System.out.println("L'attaquant a gagné !");
         } else {
-            System.out.println("Dsl, t'es mauvais Jack !");
+            System.out.println("Le defenseur a gagné");
         }
     }
 
     /**
-     * Gameplay defenseur mode
-     * @param defenseur
-     * @param attaquant
+     * GamePlay duel
+     * @param joueur1
+     * @param joueur1
      * @param nbGame
      */
-    public void defenseurGamePlay (Player defenseur, Player attaquant, int nbGame) {
-        GameMethode gameMethode = new GameMethode();
-        String returnMakeATry [] = new String[3];
-        int returnInitGame[] = defenseur.initGame(nbGame, 0);
-        int nbTry = 1;
-        String humanAnswer = "";
-        String oldTentative = "";
+    public void duelGamePlay (Player joueur1, Player joueur2, int nbGame) {
+        String tentativeJ1= "";
+        String answerJ1 = "";
+        String tentativeJ2 = "";
+        String answerJ2 = "";
+
+        // Le joueur2 défini sa combinaison
+        GameInfo gameInfo = joueur2.initGame(nbGame,0 );
+        String definedCombinaison = gameInfo.getDefinedCombinaison();
+        int Combisize = gameInfo.getCombiSize();
+
+        // Le joueur 1 défini sa combinasion (meme taille que le premier)
+        gameInfo = joueur1.initGame(nbGame,Combisize);
+        String definedCombinaison2 = gameInfo.getDefinedCombinaison();
+
+        int nbTryMax = gameInfo.getCombiSize()*2;
+        int nbTry = gameInfo.getNbTry();
         do {
-            returnMakeATry = attaquant.makeATry(returnInitGame[0], returnInitGame[1], returnInitGame[2], nbTry, humanAnswer, oldTentative );
-            String returnTellUpDOwnOk [] = defenseur.tellUpDownOk(returnMakeATry[0], returnMakeATry[1]);
-            nbTry ++;
-            humanAnswer = returnTellUpDOwnOk[0];
-            oldTentative = returnTellUpDOwnOk[1];
-            if (returnMakeATry[0].equals(returnMakeATry[1]) == true) {
+            // essai du joueur 1
+            gameInfo.setDefinedCombinaison(definedCombinaison);
+            gameInfo.setAnswer(answerJ2);
+            gameInfo.setTentative(tentativeJ1);
+            joueur1.makeATry(gameInfo);
+            joueur2.tellUpDownOk(gameInfo);
+            System.out.println("La réponse : "+ gameInfo.getAnswer());
+            tentativeJ1 = gameInfo.getTentative();
+            answerJ2 = gameInfo.getAnswer();
+            if (gameInfo.getTentative().equals(gameInfo.getDefinedCombinaison()) ) {
+                System.out.println("Le joueur 1 a gagné !");
                 break;
             }
-        } while (Integer.parseInt(returnMakeATry[2]) < Integer.parseInt(returnMakeATry[3]));
-        if (returnMakeATry[0].equals(returnMakeATry[1]) == false) {
-            System.out.println("Bravo, c'est gagné !");
-        } else {
-            System.out.println("Dsl, t'es mauvais Jack !");
-        }
-    }
 
-    /**
-     * GamePlay duel mode
-     * @param defenseur
-     * @param attaquant
-     * @param nbGame
-     */
-    public void duelGamePlay (Player defenseur, Player attaquant, int nbGame) {
-            String humanReturnMakeATry [] = new String[3];
-            String IAReturnMakeATry [] = new String [3];
-            int humanReturnInitGame [] = attaquant.initGame(nbGame, 0);
-            int IAReturnInitGame[] = defenseur.initGame(nbGame, humanReturnInitGame[1]);
-            int nbTry = 1;
-            do {
-                humanReturnMakeATry = attaquant.makeATry(IAReturnInitGame[0], IAReturnInitGame[1], IAReturnInitGame[2], nbTry, "", "");
-                defenseur.tellUpDownOk(humanReturnMakeATry[0], humanReturnMakeATry[1]);
-                IAReturnMakeATry = defenseur.makeATry(humanReturnInitGame[0], humanReturnInitGame[1], IAReturnInitGame[2], nbTry, "", "");
-                attaquant.tellUpDownOk(IAReturnMakeATry[0],IAReturnMakeATry[1]);
-                nbTry ++;
-                if (humanReturnMakeATry[0].equals(humanReturnMakeATry[1]) == true || IAReturnMakeATry[0].equals(IAReturnMakeATry[1]) == true) {
-                    break;
-                }
-            } while (Integer.parseInt(IAReturnMakeATry[2]) < Integer.parseInt(IAReturnMakeATry[3]));
-            if (humanReturnMakeATry[0].equals(humanReturnMakeATry[1]) == true) {
-                System.out.println("Bravo, c'est gagné !");
-            } else if (IAReturnMakeATry[0].equals(IAReturnMakeATry[1]) == true) {
-                System.out.println("Dsl, t'es mauvais Jack !");
-            } else {
-                System.out.println("Vous etes tous les deux mauvais ! Ce trésor restera caché !");
+            // essai du joueur 2
+            gameInfo.setDefinedCombinaison(definedCombinaison2);
+            gameInfo.setAnswer(answerJ1);
+            gameInfo.setTentative(tentativeJ2);
+            joueur2.makeATry(gameInfo);
+            joueur1.tellUpDownOk(gameInfo);
+            System.out.println("La réponse : "+ gameInfo.getAnswer());
+            tentativeJ2 = gameInfo.getTentative();
+            answerJ1 = gameInfo.getAnswer();
+            if (gameInfo.getTentative().equals(gameInfo.getDefinedCombinaison()) ) {
+                System.out.println("Le joueur 2 a gagné !");
+                break;
             }
+
+            nbTry ++;
+            gameInfo.setNbTry(nbTry);
+
+        } while (nbTry <= nbTryMax);
+        if (nbTry > nbTryMax) {
+            System.out.println("Vous etes tous les deux mauvais ! Ce trésor restera caché !");
+        }
     }
 }
