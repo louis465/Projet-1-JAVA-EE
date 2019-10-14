@@ -94,22 +94,25 @@ class GameMethode {
     }
 
     static String scanAnStringWithOnlyNumber () {
+        int intNumber = 0;
         String strNumber = "";
-        do {
-            try {
-                strNumber = sc.nextLine();
-                int intNumber = Integer.parseInt(strNumber);
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Veuillez saisir des chiffres");
-                } catch (InputMismatchException e) {
-                    System.out.println("Veuillez saisir un chiffre");
-                    sc.next();
+            do {
+                try {
+                    strNumber = sc.nextLine();
+                    for (int i = 0; i <strNumber.length(); i++) {
+                        if (!String.valueOf(strNumber.charAt(i)).equals("0") && !String.valueOf(strNumber.charAt(i)).equals("1") && !String.valueOf(strNumber.charAt(i)).equals("2") && !String.valueOf(strNumber.charAt(i)).equals("3") && !String.valueOf(strNumber.charAt(i)).equals("4") && !String.valueOf(strNumber.charAt(i)).equals("5") && !String.valueOf(strNumber.charAt(i)).equals("6") && !String.valueOf(strNumber.charAt(i)).equals("7") && !String.valueOf(strNumber.charAt(i)).equals("8") && !String.valueOf(strNumber.charAt(i)).equals("9") ) {
+                            throw new BadCharException ();
+                        }
+                    }
                 } catch (Exception e) {
-                    System.out.println("Erreur inconnue");
+                    System.out.println("Veuillez saisir des chiffres");
+                    strNumber = "";
                 }
-            } while (strNumber.equals("")) ;
-            return strNumber;
-        }
+            } while (strNumber.equals(""));
+        return strNumber;
+    }
+
+
 
     /**
      * set a new tentative from an answer ><=

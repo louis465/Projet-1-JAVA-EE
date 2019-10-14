@@ -1,3 +1,5 @@
-public class BadCharException extends RuntimeException {
+public class BadCharException extends Exception {
 
-}
+        BadCharException () {
+        }
+    }

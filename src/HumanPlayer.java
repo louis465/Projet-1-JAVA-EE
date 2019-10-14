@@ -18,7 +18,7 @@ import java.util.Scanner;
             Player IAPlayer = new IAPlayer();
             String definedCombinaison ="";
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
-            definedCombinaison = gameMethode.scanAnString();
+            definedCombinaison = gameMethode.scanAnStringWithOnlyNumber();
             this.combiSize = definedCombinaison.length();
             nbmaxTry = this.combiSize *2;
             System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur qui aura " +nbmaxTry+ " essais!");
@@ -36,7 +36,7 @@ import java.util.Scanner;
             String definedCombinaison = gameInfo.getDefinedCombinaison();
             System.out.println("Votre tentative n°" + nbTry + " :");
             do {
-                tentative = gameMethode.scanAnString();
+                tentative = gameMethode.scanAnStringWithOnlyNumber();
                 if (tentative.length() != definedCombinaison.length()) {
                     System.out.println("Veuillez saisir une combinaison avec le bon nombre de chiffre");
                 }
