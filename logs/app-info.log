@@ -1,0 +1,15 @@
+
+[INFO ] 2019-10-14 18:39:37.820 [main] Main - Info Message Logged !!!
+[ERROR] 2019-10-14 18:39:37.824 [main] Main - Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at Main.main(Main.java:11) [classes/:?]
+[WARN ] 2019-10-14 18:39:37.835 [main] Main - This is warn : 
+[FATAL] 2019-10-14 18:39:37.835 [main] Main - This is fatal : 
+[ERROR] 2019-10-14 18:39:40.279 [main] GameMethode - Erreur :java.util.InputMismatchException
+[INFO ] 2019-10-14 18:39:58.331 [main] GameMethode - Saisie utilisateur :0
+[INFO ] 2019-10-14 18:39:58.331 [main] Gamechoice - Mode choisi : 0
+[ERROR] 2019-10-14 18:40:08.189 [main] GameMethode - Erreur :java.util.InputMismatchException
+[INFO ] 2019-10-14 18:40:13.379 [main] GameMethode - Saisie utilisateur :3
+[INFO ] 2019-10-14 18:40:13.379 [main] Gamechoice - Mode choisi : 3
+[ERROR] 2019-10-14 18:40:19.046 [main] GameMethode - Erreur :BadCharException
+[ERROR] 2019-10-14 18:40:39.818 [main] GameMethode - Erreur :BadCharException
