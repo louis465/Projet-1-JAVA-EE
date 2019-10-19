@@ -9,7 +9,10 @@ class GameMethode {
     private static final Logger logger = LogManager.getLogger(GameMethode.class.getName());
     static Scanner sc = new Scanner(System.in);
 
-
+    /**
+     * Téléchargement des données de config
+     * @return config datas
+     */
     static ArrayList<String> loadConfigFile () {
         ArrayList<String> configData = new ArrayList<>();
         String defaultCombiSize = "";
@@ -61,7 +64,7 @@ class GameMethode {
     }
 
     /**
-     * Compare two combinaison with ><=
+     * Compare two combinaison with -+=
      * @param tentative
      * @param combinaison
      * @return answer
@@ -105,7 +108,7 @@ class GameMethode {
     }
 
     /**
-     * Scan an String with exception gestion
+     * Scan a String with exception gestion
      * @return
      */
     static String scanAnString() {
@@ -125,6 +128,10 @@ class GameMethode {
 
     }
 
+    /**
+     * Scan a String who can only be a number
+     * @return
+     */
     static String scanAnStringWithOnlyNumber () {
         int intNumber = 0;
         String strNumber = "";

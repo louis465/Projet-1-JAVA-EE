@@ -1,26 +1,20 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 
 // classe servant a stocker les données de jeu et à y acceder ou à les modifier au besoin
 public class GameInfo {
-    private static final Logger logger = LogManager.getLogger(GameMethode.class.getName());
     private String definedCombinaison;
     private int combiSize;
-    private int nbGame;
     private String answer;
     private String tentative;
     private int nbTry = 1;
-    public ArrayList<Integer> minNumber;
-    public ArrayList<Integer> maxNumber;
+    ArrayList<Integer> minNumber;
+    ArrayList<Integer> maxNumber;
     private Boolean developerMode ;
     private int nbMaxTry;
 
-    GameInfo(String definedCombinaison, int combiSize, int nbGame, boolean developerMode, int nbMaxTry) {
+    GameInfo(String definedCombinaison, int combiSize, boolean developerMode, int nbMaxTry) {
         this.definedCombinaison = definedCombinaison;
         this.combiSize = combiSize;
-        this.nbGame = nbGame;
         this.developerMode = developerMode;
         this.nbMaxTry = nbMaxTry;
     }

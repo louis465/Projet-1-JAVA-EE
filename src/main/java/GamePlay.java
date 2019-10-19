@@ -13,8 +13,10 @@ public class GamePlay {
      * @param nbGame
      */
     public void launchGame(Player defenseur, Player attaquant, int nbGame) {
+        // lancement du GamePlay standard
         if (nbGame == 1 || nbGame == 2) {
             this.standardGamePlay(defenseur, attaquant, nbGame);
+       // lancement du GamePlay Duel
         } else {
             this.duelGamePlay(defenseur, attaquant, nbGame);
         }
@@ -23,9 +25,12 @@ public class GamePlay {
     }
 
     public void standardGamePlay  (Player defenseur, Player attaquant, int nbGame){
+        // Le defenseur initie sa combinaison
         GameInfo gameInfo = defenseur.initGame(nbGame, 0 );
         int nbTryMax = gameInfo.getCombiSize()*2;
         int nbTry = gameInfo.getNbTry();
+
+        // L'attaquant fait ses essais et le défenseur lui répond par =+-
         do {
             attaquant.makeATry(gameInfo);
             defenseur.tellUpDownOk(gameInfo);

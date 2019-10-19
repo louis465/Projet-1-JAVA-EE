@@ -21,6 +21,8 @@ public class IAPlayer extends Player {
         int defaultNbMaxTry = Integer.parseInt(configData.get(1));
         Boolean developerMode = Boolean.getBoolean(configData.get(2));
         int nbmaxTry =0;
+        // Cas classique , l'humain défini la taille de la combinaison.
+        // Dans l'autre cas on est en mode duel et la taille de la combinaison (définie préalablement par l'autre joueur) est en parametre
         if (nbGame == 1 || nbGame ==2) {
             System.out.println("Quel est la taille de la combinaison que vous souhaitez trouver ?  ");
             do {
@@ -35,7 +37,7 @@ public class IAPlayer extends Player {
         if ( developerMode ) {
             System.out.println(definedCombinaison);
         }
-        GameInfo gameInfo = new GameInfo(definedCombinaison, combiSize,nbGame, developerMode, nbmaxTry);
+        GameInfo gameInfo = new GameInfo(definedCombinaison, combiSize, developerMode, nbmaxTry);
         gameInfo.setDefinedCombinaison(definedCombinaison);
         return gameInfo;
     }
@@ -49,6 +51,8 @@ public class IAPlayer extends Player {
         String definedCombinaison = gameInfo.getDefinedCombinaison();
         int nbTry = gameInfo.getNbTry();
         System.out.println("Tentative de l'ordinateur n°" + nbTry + " :");
+        // cas du premier essai.
+        // Je défini mes minNumber et maxNumber à 0 et 9
         if (gameInfo.getAnswer()== null || gameInfo.getAnswer().equals("")) {
             ArrayList<Integer> minNumber = new ArrayList<>(gameInfo.getCombiSize());
             ArrayList<Integer> maxNumber = new ArrayList<>(gameInfo.getCombiSize());
@@ -62,6 +66,7 @@ public class IAPlayer extends Player {
             gameInfo.setTentative(tentative);
             System.out.println(tentative);
             logger.info("Tentative de l'IA : " + tentative );
+            // Les tentatives suivantes, basées sur la réponse de l'autre joueur
         } else {
             System.out.println(gameInfo.getMinNumber());
             System.out.println(gameInfo.getMaxNumber());
@@ -73,7 +78,7 @@ public class IAPlayer extends Player {
         }
 
     /**
-     * Make IA give answer ><= from a combinaison
+     * Make IA give answer -+= from a combinaison
      */
     @Override
     public void tellUpDownOk(GameInfo gameInfo) {

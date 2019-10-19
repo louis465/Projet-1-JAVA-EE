@@ -16,15 +16,18 @@ import java.util.Scanner;
          */
         @Override
         public GameInfo initGame(int nbGame, int combiSize) {
+            // télechargement des données de config
             ArrayList<String> configData =   GameMethode.loadConfigFile();
             Boolean developerMode = Boolean.getBoolean(configData.get(2));
+
+            // saisie de la combinaison
             System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
             String definedCombinaison = GameMethode.scanAnStringWithOnlyNumber();
             logger.info("Combinaison définie : " + definedCombinaison);
             combiSize = definedCombinaison.length();
             int nbmaxTry = combiSize*2;
             System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur qui aura " +nbmaxTry+ " essais!");
-            GameInfo gameInfo = new GameInfo(definedCombinaison, combiSize,nbGame, developerMode, nbmaxTry);
+            GameInfo gameInfo = new GameInfo(definedCombinaison, combiSize, developerMode, nbmaxTry);
             return gameInfo;
         }
 
@@ -36,6 +39,7 @@ import java.util.Scanner;
             String tentative = "";
             int nbTry =gameInfo.getNbTry();
             String definedCombinaison = gameInfo.getDefinedCombinaison();
+            // Saisie des tentatives
             System.out.println("Votre tentative n°" + nbTry + " :");
             do {
                 tentative = GameMethode.scanAnStringWithOnlyNumber();
