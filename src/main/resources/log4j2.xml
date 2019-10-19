@@ -23,9 +23,9 @@
         <Logger name="logs" level="INFO" additivity="true">
             <appender-ref ref="file" />
         </Logger>
-       <Root level="INFO" additivity="false">
+      <!-- <Root level="INFO" additivity="false">
             <appender-ref ref="console" />
             <appender-ref ref="file" />
-        </Root>
+        </Root> -->
     </Loggers>
 </Configuration>
