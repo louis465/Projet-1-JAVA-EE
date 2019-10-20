@@ -1,3 +1,8 @@
+package players;
+
+import affichage.Affichage;
+import game.GameInfo;
+import game.GameMethode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -6,8 +11,8 @@ import java.util.Scanner;
 
 public class IAPlayer extends Player {
     private static final Logger logger = LogManager.getLogger(HumanPlayer.class.getName());
+    public static final String LOG_COMBISIZE = "Définition de la taille de combinaison souhaité : #1";
     Scanner sc = new Scanner(System.in);
-    Config config = new Config();
 
     /**
      * Make IA set a new combinaison
@@ -24,13 +29,13 @@ public class IAPlayer extends Player {
         // Cas classique , l'humain défini la taille de la combinaison.
         // Dans l'autre cas on est en mode duel et la taille de la combinaison (définie préalablement par l'autre joueur) est en parametre
         if (nbGame == 1 || nbGame ==2) {
-            System.out.println("Quel est la taille de la combinaison que vous souhaitez trouver ?  ");
+            Affichage.affichage(Affichage.INIT_COMBISIZE);
             do {
                 combiSize = GameMethode.scanAnInt();
-                logger.info("Définition de la taille de combinaison souhaité : " + combiSize);
+                logger.info(LOG_COMBISIZE.replace("#1", String.valueOf(combiSize)));
             } while (combiSize <= 1);
         }
-        nbmaxTry = combiSize *2;
+        nbmaxTry = defaultNbMaxTry;
         String definedCombinaison = GameMethode.setRandomCombinaison(combiSize);
         logger.info("Combinaison définie par l'IA : " + definedCombinaison );
         System.out.println("Vous allez devoir trouver une combinaison de "+ combiSize +" chiffre en "+nbmaxTry+" essais");

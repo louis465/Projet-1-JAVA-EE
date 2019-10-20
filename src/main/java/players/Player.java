@@ -1,3 +1,7 @@
+package players;
+
+import game.GameInfo;
+
 /**
  * set Players behaviors
  */

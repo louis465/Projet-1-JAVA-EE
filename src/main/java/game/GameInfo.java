@@ -1,3 +1,5 @@
+package game;
+
 import java.util.ArrayList;
 
 // classe servant a stocker les données de jeu et à y acceder ou à les modifier au besoin
@@ -7,12 +9,12 @@ public class GameInfo {
     private String answer;
     private String tentative;
     private int nbTry = 1;
-    ArrayList<Integer> minNumber;
-    ArrayList<Integer> maxNumber;
+    private ArrayList<Integer> minNumber;
+    private ArrayList<Integer> maxNumber;
     private Boolean developerMode ;
     private int nbMaxTry;
 
-    GameInfo(String definedCombinaison, int combiSize, boolean developerMode, int nbMaxTry) {
+    public GameInfo(String definedCombinaison, int combiSize, boolean developerMode, int nbMaxTry) {
         this.definedCombinaison = definedCombinaison;
         this.combiSize = combiSize;
         this.developerMode = developerMode;
@@ -36,53 +38,53 @@ public class GameInfo {
         this.maxNumber = maxNumber;
     }
 
-    void setCombiSize(int combiSize) {
+    public void setCombiSize(int combiSize) {
         this.combiSize = combiSize;
     }
 
-    Boolean getDeveloperMode() {
+    public Boolean getDeveloperMode() {
         return developerMode;
     }
 
-    void setDeveloperMode(Boolean developerMode) {
+    public void setDeveloperMode(Boolean developerMode) {
         this.developerMode = developerMode;
     }
 
-    String getDefinedCombinaison() {
+    public String getDefinedCombinaison() {
         return definedCombinaison;
     }
 
-    void setDefinedCombinaison(String definedCombinaison) {
+    public void setDefinedCombinaison(String definedCombinaison) {
         this.definedCombinaison = definedCombinaison;
     }
 
 
-    String getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    void setAnswer(String answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 
-    String getTentative() {
+    public String getTentative() {
         return tentative;
     }
 
-    void setTentative(String tentative) {
+    public void setTentative(String tentative) {
         this.tentative = tentative;
     }
 
-    int getNbTry() {
+    public int getNbTry() {
         return nbTry;
     }
 
-    void setNbTry(int nbTry) {
+    public void setNbTry(int nbTry) {
         this.nbTry = nbTry;
     }
 
 
-    int getCombiSize() {
+    public int getCombiSize() {
         return combiSize;
     }
 }

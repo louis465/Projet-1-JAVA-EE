@@ -1,3 +1,7 @@
+package players;
+
+import game.GameInfo;
+import game.GameMethode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

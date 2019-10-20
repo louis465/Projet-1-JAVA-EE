@@ -1,5 +1,10 @@
+package game;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import players.HumanPlayer;
+import players.IAPlayer;
+import players.Player;
 
 import java.util.Scanner;
 
@@ -25,7 +30,7 @@ public class Gamechoice {
      * Run asking process for a Game mode.
      * @return gameMode selected
      */
-    String runGame() {
+    public String runGame() {
         GamePlay launchGame = new GamePlay();
         Player IAPlayer = new IAPlayer();
         Player HumanPlayer = new HumanPlayer();

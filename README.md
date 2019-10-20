@@ -20,7 +20,7 @@ Pas d'installation requise, uniquement un IDE.
 
 ## **Démarrage**
 
-Lancer la fonction Main de la classe Main.
+Lancer la fonction Main.Main de la classe Main.Main.
 
     Un fichier de config _config.properties_ est également disponible pour :
         - définir la taille par défault de la combinaison à trouver

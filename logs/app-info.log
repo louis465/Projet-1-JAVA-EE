@@ -1,39 +1,39 @@
-[INFO ] 2019-10-17 10:37:22.543 [main] Main - Début d'une nouvelle partie
-[INFO ] 2019-10-17 10:37:31.824 [main] GameMethode - Saisie utilisateur :2
-[INFO ] 2019-10-17 10:37:31.824 [main] Gamechoice - Mode choisi par l'utilisateur : 2
-[INFO ] 2019-10-17 10:37:35.138 [main] HumanPlayer - Combinaison définie : 5678
-[INFO ] 2019-10-17 10:37:35.138 [main] HumanPlayer - Tentative de l'IA : 8865
-[INFO ] 2019-10-17 10:37:53.465 [main] HumanPlayer - Réponse du joueur: --++
-[INFO ] 2019-10-17 10:37:53.465 [main] HumanPlayer - Tentative de l'IA : 5298
-[INFO ] 2019-10-17 10:39:53.011 [main] HumanPlayer - Réponse du joueur: =+-=
-[INFO ] 2019-10-17 10:39:53.011 [main] HumanPlayer - Tentative de l'IA : 5378
-[INFO ] 2019-10-17 10:41:15.293 [main] HumanPlayer - Réponse du joueur: =+==
-[INFO ] 2019-10-17 10:41:15.293 [main] HumanPlayer - Tentative de l'IA : 5678
-[INFO ] 2019-10-17 10:42:15.199 [main] HumanPlayer - Réponse du joueur: ====
-[INFO ] 2019-10-17 10:42:15.199 [main] GamePlay - Victoire de l'attaquant
-[INFO ] 2019-10-17 10:42:21.669 [main] GameMethode - Saisie utilisateur :1
-[INFO ] 2019-10-17 10:42:21.669 [main] Gamechoice - Mode fin de jeu choisi :1
-[INFO ] 2019-10-17 10:42:25.403 [main] HumanPlayer - Combinaison définie : 4567
-[INFO ] 2019-10-17 10:42:25.403 [main] HumanPlayer - Tentative de l'IA : 3998
-[INFO ] 2019-10-17 10:43:15.825 [main] HumanPlayer - Réponse du joueur: +---
-[INFO ] 2019-10-17 10:43:15.825 [main] HumanPlayer - Tentative de l'IA : 9120
-[INFO ] 2019-10-17 10:44:05.480 [main] HumanPlayer - Réponse du joueur: -+++
-[INFO ] 2019-10-17 10:44:05.480 [main] HumanPlayer - Tentative de l'IA : 7363
-[INFO ] 2019-10-17 10:46:17.591 [main] HumanPlayer - Réponse du joueur: -+=+
-[INFO ] 2019-10-17 10:46:17.591 [main] HumanPlayer - Tentative de l'IA : 5566
-[INFO ] 2019-10-17 10:50:53.230 [main] Main - Début d'une nouvelle partie
-[INFO ] 2019-10-17 10:50:55.277 [main] GameMethode - Saisie utilisateur :2
-[INFO ] 2019-10-17 10:50:55.277 [main] Gamechoice - Mode choisi par l'utilisateur : 2
-[INFO ] 2019-10-17 10:50:57.620 [main] HumanPlayer - Combinaison définie : 5678
-[INFO ] 2019-10-17 10:50:57.620 [main] HumanPlayer - Tentative de l'IA : 0238
-[INFO ] 2019-10-17 10:51:31.716 [main] HumanPlayer - Réponse du joueur: +++=
-[INFO ] 2019-10-17 10:51:31.716 [main] HumanPlayer - Tentative de l'IA : 8698
-[INFO ] 2019-10-17 10:51:44.685 [main] HumanPlayer - Réponse du joueur: -=-=
-[INFO ] 2019-10-17 10:51:44.685 [main] HumanPlayer - Tentative de l'IA : 5648
-[INFO ] 2019-10-17 10:52:27.060 [main] HumanPlayer - Réponse du joueur: ==+=
-[INFO ] 2019-10-17 10:52:27.060 [main] HumanPlayer - Tentative de l'IA : 5668
-[INFO ] 2019-10-17 10:52:51.497 [main] HumanPlayer - Réponse du joueur: ==+=
-[INFO ] 2019-10-17 10:52:51.512 [main] HumanPlayer - Tentative de l'IA : 5688
-[INFO ] 2019-10-17 10:53:33.810 [main] HumanPlayer - Réponse du joueur: ==-=
-[INFO ] 2019-10-17 10:53:33.810 [main] HumanPlayer - Tentative de l'IA : 5678
-[INFO ] 2019-10-17 10:54:19.074 [main] Main - Début d'une nouvelle partie
+[INFO ] 2019-10-17 10:37:22.543 [main] Main.Main - Début d'une nouvelle partie
+[INFO ] 2019-10-17 10:37:31.824 [main] game.GameMethode - Saisie utilisateur :2
+[INFO ] 2019-10-17 10:37:31.824 [main] game.Gamechoice - Mode choisi par l'utilisateur : 2
+[INFO ] 2019-10-17 10:37:35.138 [main] players.HumanPlayer - Combinaison définie : 5678
+[INFO ] 2019-10-17 10:37:35.138 [main] players.HumanPlayer - Tentative de l'IA : 8865
+[INFO ] 2019-10-17 10:37:53.465 [main] players.HumanPlayer - Réponse du joueur: --++
+[INFO ] 2019-10-17 10:37:53.465 [main] players.HumanPlayer - Tentative de l'IA : 5298
+[INFO ] 2019-10-17 10:39:53.011 [main] players.HumanPlayer - Réponse du joueur: =+-=
+[INFO ] 2019-10-17 10:39:53.011 [main] players.HumanPlayer - Tentative de l'IA : 5378
+[INFO ] 2019-10-17 10:41:15.293 [main] players.HumanPlayer - Réponse du joueur: =+==
+[INFO ] 2019-10-17 10:41:15.293 [main] players.HumanPlayer - Tentative de l'IA : 5678
+[INFO ] 2019-10-17 10:42:15.199 [main] players.HumanPlayer - Réponse du joueur: ====
+[INFO ] 2019-10-17 10:42:15.199 [main] game.GamePlay - Victoire de l'attaquant
+[INFO ] 2019-10-17 10:42:21.669 [main] game.GameMethode - Saisie utilisateur :1
+[INFO ] 2019-10-17 10:42:21.669 [main] game.Gamechoice - Mode fin de jeu choisi :1
+[INFO ] 2019-10-17 10:42:25.403 [main] players.HumanPlayer - Combinaison définie : 4567
+[INFO ] 2019-10-17 10:42:25.403 [main] players.HumanPlayer - Tentative de l'IA : 3998
+[INFO ] 2019-10-17 10:43:15.825 [main] players.HumanPlayer - Réponse du joueur: +---
+[INFO ] 2019-10-17 10:43:15.825 [main] players.HumanPlayer - Tentative de l'IA : 9120
+[INFO ] 2019-10-17 10:44:05.480 [main] players.HumanPlayer - Réponse du joueur: -+++
+[INFO ] 2019-10-17 10:44:05.480 [main] players.HumanPlayer - Tentative de l'IA : 7363
+[INFO ] 2019-10-17 10:46:17.591 [main] players.HumanPlayer - Réponse du joueur: -+=+
+[INFO ] 2019-10-17 10:46:17.591 [main] players.HumanPlayer - Tentative de l'IA : 5566
+[INFO ] 2019-10-17 10:50:53.230 [main] Main.Main - Début d'une nouvelle partie
+[INFO ] 2019-10-17 10:50:55.277 [main] game.GameMethode - Saisie utilisateur :2
+[INFO ] 2019-10-17 10:50:55.277 [main] game.Gamechoice - Mode choisi par l'utilisateur : 2
+[INFO ] 2019-10-17 10:50:57.620 [main] players.HumanPlayer - Combinaison définie : 5678
+[INFO ] 2019-10-17 10:50:57.620 [main] players.HumanPlayer - Tentative de l'IA : 0238
+[INFO ] 2019-10-17 10:51:31.716 [main] players.HumanPlayer - Réponse du joueur: +++=
+[INFO ] 2019-10-17 10:51:31.716 [main] players.HumanPlayer - Tentative de l'IA : 8698
+[INFO ] 2019-10-17 10:51:44.685 [main] players.HumanPlayer - Réponse du joueur: -=-=
+[INFO ] 2019-10-17 10:51:44.685 [main] players.HumanPlayer - Tentative de l'IA : 5648
+[INFO ] 2019-10-17 10:52:27.060 [main] players.HumanPlayer - Réponse du joueur: ==+=
+[INFO ] 2019-10-17 10:52:27.060 [main] players.HumanPlayer - Tentative de l'IA : 5668
+[INFO ] 2019-10-17 10:52:51.497 [main] players.HumanPlayer - Réponse du joueur: ==+=
+[INFO ] 2019-10-17 10:52:51.512 [main] players.HumanPlayer - Tentative de l'IA : 5688
+[INFO ] 2019-10-17 10:53:33.810 [main] players.HumanPlayer - Réponse du joueur: ==-=
+[INFO ] 2019-10-17 10:53:33.810 [main] players.HumanPlayer - Tentative de l'IA : 5678
+[INFO ] 2019-10-17 10:54:19.074 [main] Main.Main - Début d'une nouvelle partie

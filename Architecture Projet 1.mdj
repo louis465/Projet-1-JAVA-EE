@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"name": "Main.Main",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -63,7 +63,7 @@
 											"top": 71,
 											"width": 41.919921875,
 											"height": 13,
-											"text": "Main"
+											"text": "Main.Main"
 										},
 										{
 											"_type": "LabelView",
@@ -762,7 +762,7 @@
 											"top": 335,
 											"width": 413.68310546875,
 											"height": 13,
-											"text": "GamePlay"
+											"text": "game.GamePlay"
 										},
 										{
 											"_type": "LabelView",
@@ -849,7 +849,7 @@
 											"top": 368,
 											"width": 413.68310546875,
 											"height": 13,
-											"text": "+launchGame(Player defenseur, Player attaquant, int nbGame)",
+											"text": "+launchGame(players.Player defenseur, players.Player attaquant, int nbGame)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -866,7 +866,7 @@
 											"top": 383,
 											"width": 413.68310546875,
 											"height": 13,
-											"text": "+standardGamePlay(Player defenseur, Player attaquant, int nbGame)",
+											"text": "+standardGamePlay(players.Player defenseur, players.Player attaquant, int nbGame)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -883,7 +883,7 @@
 											"top": 398,
 											"width": 413.68310546875,
 											"height": 13,
-											"text": "+duelGamePlay(Player defenseur, Player attaquant, int nbGame)",
+											"text": "+duelGamePlay(players.Player defenseur, players.Player attaquant, int nbGame)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -900,7 +900,7 @@
 											"top": 413,
 											"width": 413.68310546875,
 											"height": 13,
-											"text": "+duelPlayFactor(Player Joueur 1, Player Joueur 2, GameInfo gameinfo)",
+											"text": "+duelPlayFactor(players.Player Joueur 1, players.Player Joueur 2, game.GameInfo gameinfo)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2644,7 +2644,7 @@
 											"top": 735,
 											"width": 150,
 											"height": 13,
-											"text": "HumanPlayer"
+											"text": "players.HumanPlayer"
 										},
 										{
 											"_type": "LabelView",
@@ -2820,7 +2820,7 @@
 											"top": 735,
 											"width": 158,
 											"height": 13,
-											"text": "IAPlayer"
+											"text": "players.IAPlayer"
 										},
 										{
 											"_type": "LabelView",
@@ -4806,7 +4806,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"name": "Main.Main",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4994,7 +4994,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "GamePlay",
+					"name": "game.GamePlay",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -5109,7 +5109,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFtkOlOOJO05CA="
 									},
-									"name": "Player defenseur",
+									"name": "players.Player defenseur",
 									"type": ""
 								},
 								{
@@ -5118,7 +5118,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFtkOlOOJO05CA="
 									},
-									"name": "Player attaquant",
+									"name": "players.Player attaquant",
 									"type": ""
 								},
 								{
@@ -5146,7 +5146,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFttfu+kGMeuQ0="
 									},
-									"name": "Player defenseur"
+									"name": "players.Player defenseur"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5154,7 +5154,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFttfu+kGMeuQ0="
 									},
-									"name": "Player attaquant"
+									"name": "players.Player attaquant"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5180,7 +5180,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFttfyzTmRMsa4="
 									},
-									"name": "Player defenseur",
+									"name": "players.Player defenseur",
 									"type": ""
 								},
 								{
@@ -5189,7 +5189,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFttfyzTmRMsa4="
 									},
-									"name": "Player attaquant",
+									"name": "players.Player attaquant",
 									"type": ""
 								},
 								{
@@ -5217,7 +5217,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFt5QhHyPTrqRE="
 									},
-									"name": "Player Joueur 1",
+									"name": "players.Player Joueur 1",
 									"type": ""
 								},
 								{
@@ -5226,7 +5226,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFt5QhHyPTrqRE="
 									},
-									"name": "Player Joueur 2",
+									"name": "players.Player Joueur 2",
 									"type": ""
 								},
 								{
@@ -5235,7 +5235,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFt5QhHyPTrqRE="
 									},
-									"name": "GameInfo gameinfo",
+									"name": "game.GameInfo gameinfo",
 									"type": ""
 								}
 							]
@@ -5744,7 +5744,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "HumanPlayer",
+					"name": "players.HumanPlayer",
 					"ownedElements": [
 						{
 							"_type": "UMLDependency",
@@ -5780,7 +5780,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "IAPlayer",
+					"name": "players.IAPlayer",
 					"ownedElements": [
 						{
 							"_type": "UMLDependency",

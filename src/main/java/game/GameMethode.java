@@ -1,3 +1,5 @@
+package game;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -5,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
-class GameMethode {
+public class GameMethode {
     private static final Logger logger = LogManager.getLogger(GameMethode.class.getName());
     static Scanner sc = new Scanner(System.in);
 
@@ -13,7 +15,7 @@ class GameMethode {
      * Téléchargement des données de config
      * @return config datas
      */
-    static ArrayList<String> loadConfigFile () {
+    public static ArrayList<String> loadConfigFile () {
         ArrayList<String> configData = new ArrayList<>();
         String defaultCombiSize = "";
         String defaultNbTry = "";
@@ -43,7 +45,7 @@ class GameMethode {
      * @param max
      * @return randomNumber
      */
-    static String setRandomNumber(int min, int max) {
+    public static String setRandomNumber(int min, int max) {
         Random ran = new Random();
         int x = ran.nextInt((max + 1 - min)) + min;
         return String.valueOf(x);
@@ -54,7 +56,7 @@ class GameMethode {
      * @param size
      * @return combi in String
      */
-    static String setRandomCombinaison(int size) {
+    public static String setRandomCombinaison(int size) {
         String strCombi = "";
         for (int i = 0; i < size; i++) {
             String number = setRandomNumber(0, 9);
@@ -69,7 +71,7 @@ class GameMethode {
      * @param combinaison
      * @return answer
      */
-    static String comparingCombi(String tentative, String combinaison) {
+    public static String comparingCombi(String tentative, String combinaison) {
         String answer = "";
         for (int i = 0; i < tentative.length(); i++) {
             int testedTentativeNumber = Integer.parseInt(String.valueOf(tentative.charAt(i)));
@@ -89,7 +91,7 @@ class GameMethode {
      * Scan an int with exception gestion
      * @return
      */
-    static int scanAnInt() {
+    public static int scanAnInt() {
         int intToImplement = -1;
         do {
             try {
@@ -111,7 +113,7 @@ class GameMethode {
      * Scan a String with exception gestion
      * @return
      */
-    static String scanAnString() {
+    public static String scanAnString() {
         String StrToImplement = "";
         do {
             try {
@@ -132,7 +134,7 @@ class GameMethode {
      * Scan a String who can only be a number
      * @return
      */
-    static String scanAnStringWithOnlyNumber () {
+    public static String scanAnStringWithOnlyNumber () {
         int intNumber = 0;
         String strNumber = "";
             do {
@@ -158,7 +160,7 @@ class GameMethode {
      * @param gameInfo
      * @return newTentative
      */
-    static String newTentativeFromAnswer (GameInfo gameInfo) {
+   public static String newTentativeFromAnswer (GameInfo gameInfo) {
         String newTentative = "";
         String answer = gameInfo.getAnswer();
         String tentative = gameInfo.getTentative();
@@ -166,13 +168,13 @@ class GameMethode {
             if (String.valueOf(answer.charAt(i)).equals("=")) {
                 newTentative += String.valueOf(tentative).charAt(i);
             } else if (String.valueOf(answer.charAt(i)).equals("+")) {
-                gameInfo.minNumber.remove(i);
-                gameInfo.minNumber.add(i,Integer.parseInt(String.valueOf(tentative.charAt(i))) + 1);
-                newTentative += setRandomNumber(Integer.parseInt(String.valueOf(tentative.charAt(i))) + 1, gameInfo.maxNumber.get(i));
+                gameInfo.getMinNumber().remove(i);
+                gameInfo.getMinNumber().add(i,Integer.parseInt(String.valueOf(tentative.charAt(i))) + 1);
+                newTentative += setRandomNumber(Integer.parseInt(String.valueOf(tentative.charAt(i))) + 1, gameInfo.getMaxNumber().get(i));
             } else {
-                gameInfo.maxNumber.remove(i);
-                gameInfo.maxNumber.add(i,Integer.parseInt(String.valueOf(tentative.charAt(i))) - 1 );
-                newTentative += setRandomNumber(gameInfo.minNumber.get(i), Integer.parseInt(String.valueOf(tentative.charAt(i))) - 1);
+                gameInfo.getMaxNumber().remove(i);
+                gameInfo.getMaxNumber().add(i,Integer.parseInt(String.valueOf(tentative.charAt(i))) - 1 );
+                newTentative += setRandomNumber(gameInfo.getMinNumber().get(i), Integer.parseInt(String.valueOf(tentative.charAt(i))) - 1);
             }
         }
         return newTentative;

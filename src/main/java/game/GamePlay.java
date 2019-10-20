@@ -1,5 +1,8 @@
+package game;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import players.Player;
 
 public class GamePlay {
 
@@ -13,10 +16,10 @@ public class GamePlay {
      * @param nbGame
      */
     public void launchGame(Player defenseur, Player attaquant, int nbGame) {
-        // lancement du GamePlay standard
+        // lancement du game.GamePlay standard
         if (nbGame == 1 || nbGame == 2) {
             this.standardGamePlay(defenseur, attaquant, nbGame);
-       // lancement du GamePlay Duel
+       // lancement du game.GamePlay Duel
         } else {
             this.duelGamePlay(defenseur, attaquant, nbGame);
         }
@@ -53,7 +56,7 @@ public class GamePlay {
     }
 
     /**
-     * GamePlay duel
+     * game.GamePlay duel
      * @param joueur1
      * @param joueur2
      * @param nbGame
