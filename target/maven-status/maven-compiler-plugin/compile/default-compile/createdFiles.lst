@@ -1,0 +1,12 @@
+players\HumanPlayer.class
+game\GameMethode.class
+game\Gamechoice.class
+game\GameInfo.class
+players\IAPlayer.class
+game\BadCharException.class
+players\Player.class
+game\GamePlay.class
+affichage\Log.class
+affichage\Menu.class
+Main\Main.class
+affichage\Affichage.class
