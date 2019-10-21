@@ -1,5 +1,7 @@
 package players;
 
+import affichage.Affichage;
+import affichage.Log;
 import game.GameInfo;
 import game.GameMethode;
 import org.apache.logging.log4j.LogManager;
@@ -23,14 +25,14 @@ import java.util.Scanner;
             // télechargement des données de config
             ArrayList<String> configData =   GameMethode.loadConfigFile();
             Boolean developerMode = Boolean.getBoolean(configData.get(2));
+            int nbmaxTry = Integer.parseInt(configData.get(1));
 
             // saisie de la combinaison
-            System.out.println("Veuillez saisir la combinaison que l'ordinateur devra trouver :");
+            Affichage.affichage(Affichage.SET_COMBISIZE);
             String definedCombinaison = GameMethode.scanAnStringWithOnlyNumber();
-            logger.info("Combinaison définie : " + definedCombinaison);
+            logger.info(Log.logTexte(Log.SET_COMBINAISON.replace("#1", definedCombinaison)));
             combiSize = definedCombinaison.length();
-            int nbmaxTry = combiSize*2;
-            System.out.println("La combinaison définie est "+definedCombinaison+". Au tour de l'ordinateur qui aura " +nbmaxTry+ " essais!");
+            Affichage.affichage(Affichage.RESUME_SETCOMBINAISON.replace("#1", definedCombinaison).replace("#2", String.valueOf(nbmaxTry)));
             GameInfo gameInfo = new GameInfo(definedCombinaison, combiSize, developerMode, nbmaxTry);
             return gameInfo;
         }
@@ -44,12 +46,12 @@ import java.util.Scanner;
             int nbTry =gameInfo.getNbTry();
             String definedCombinaison = gameInfo.getDefinedCombinaison();
             // Saisie des tentatives
-            System.out.println("Votre tentative n°" + nbTry + " :");
+            Affichage.affichage(Affichage.TENTATIVE_NUMBER.replace("#1", String.valueOf(nbTry)));
             do {
                 tentative = GameMethode.scanAnStringWithOnlyNumber();
-                logger.info("Tentative n°" +nbTry+" du joueur :"+tentative);
+                logger.info(Log.logTexte(Log.LOG_TENTATIVE.replace("#1", String.valueOf(nbTry)).replace("#2", "du joueur").replace("#3", tentative)));
                 if (tentative.length() != definedCombinaison.length()) {
-                    System.out.println("Veuillez saisir une combinaison avec le bon nombre de chiffre");
+                    Affichage.affichage(Affichage.MAKE_CORRECT_TRY);
                 }
             } while (tentative.length() != definedCombinaison.length());
             gameInfo.setTentative(tentative);
@@ -64,12 +66,12 @@ import java.util.Scanner;
             String answer = GameMethode.comparingCombi(gameInfo.getTentative(), gameInfo.getDefinedCombinaison());
             System.out.println(answer);
             String humananswer = "";
-            System.out.println("A votre tour (+-=):");
+            Affichage.affichage(Affichage.GIVE_AN_ANSWER);
             do {
                 humananswer = GameMethode.scanAnString();
-                logger.info("Réponse du joueur: " + humananswer );
+                logger.info(Log.logTexte(Log.LOG_ANSWER.replace("#1", "du joueur").replace("#2", humananswer)));
                 if (humananswer.equals(answer) != true) {
-                    System.out.println("Hum, êtes-vous sûr de votre réponse ? ");
+                    Affichage.affichage(Affichage.GIVE_CORRECT_ANSWER);
                 }
             } while (humananswer.equals(answer) != true);
             gameInfo.setAnswer(answer);

@@ -1,5 +1,7 @@
 package game;
 
+import affichage.Affichage;
+import affichage.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +26,7 @@ public class GameMethode {
                 InputStream input = GameInfo.class.getClassLoader().getResourceAsStream("config.properties")) {
             Properties prop = new Properties();
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                Affichage.affichage(Affichage.CONFIG_FILE_ERROR);
             }
             prop.load(input);
             defaultCombiSize = prop.getProperty("nbX");
@@ -33,6 +35,7 @@ public class GameMethode {
         } catch (
                 IOException ex) {
             ex.printStackTrace();
+            logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(ex))));
         }
         configData.add(defaultCombiSize);
         configData.add(defaultNbTry);
@@ -96,14 +99,14 @@ public class GameMethode {
         do {
             try {
                 intToImplement = sc.nextInt();
-                logger.info ("Saisie utilisateur :" + intToImplement);
+                logger.info (Log.logTexte(Log.USER_INPUT).replace("#1", String.valueOf(intToImplement)));
             } catch (InputMismatchException ime) {
-                System.out.println("Veuillez saisir un chiffre");
+                Affichage.affichage(Affichage.INT_INPUT_ERROR);
                 sc.next();
-                logger.error("Erreur :" + ime);
+                logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(ime))));
             } catch (Exception e) {
-                System.out.println("Erreur inconnue");
-                logger.error("Erreur :" + e);
+                Affichage.affichage(Affichage.UNKNOW_ERROR);
+                logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(e))));
             }
         } while (intToImplement == -1);
         return intToImplement;
@@ -118,12 +121,14 @@ public class GameMethode {
         do {
             try {
                 StrToImplement = sc.nextLine();
+                logger.info (Log.logTexte(Log.USER_INPUT).replace("#1", StrToImplement));
             } catch (InputMismatchException ime) {
-                System.out.println("Veuillez saisir un chiffre");
+                Affichage.affichage(Affichage.STRING_INPUT_ERROR);
                 sc.next();
-                logger.error("Erreur :" + ime);
+                logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(ime))));
             } catch (Exception e) {
-                System.out.println("Erreur inconnue");
+                Affichage.affichage(Affichage.UNKNOW_ERROR);
+                logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(e))));
             }
         } while (StrToImplement.equals("") );
         return StrToImplement;
@@ -140,15 +145,16 @@ public class GameMethode {
             do {
                 try {
                     strNumber = sc.nextLine();
+                    logger.info (Log.logTexte(Log.USER_INPUT).replace("#1", strNumber));
                     for (int i = 0; i <strNumber.length(); i++) {
                         if (!String.valueOf(strNumber.charAt(i)).matches("[0-9]+")) {
                             throw new BadCharException();
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println("Veuillez saisir des chiffres");
+                    Affichage.affichage(Affichage.INT_INPUT_ERROR);
                     strNumber = "";
-                    logger.error("Erreur :" + e);
+                    logger.error(Log.logTexte(Log.LOG_ERROR.replace("#1", String.valueOf(e))));
                 }
             } while (strNumber.equals(""));
         return strNumber;

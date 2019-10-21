@@ -12,6 +12,15 @@ public class GameInfo {
     private ArrayList<Integer> minNumber;
     private ArrayList<Integer> maxNumber;
     private Boolean developerMode ;
+
+    public int getNbMaxTry() {
+        return nbMaxTry;
+    }
+
+    public void setNbMaxTry(int nbMaxTry) {
+        this.nbMaxTry = nbMaxTry;
+    }
+
     private int nbMaxTry;
 
     public GameInfo(String definedCombinaison, int combiSize, boolean developerMode, int nbMaxTry) {
