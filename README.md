@@ -20,7 +20,9 @@ Pas d'installation requise, uniquement un IDE.
 
 ## **Démarrage**
 
-Lancer la fonction Main.Main de la classe Main.Main.
+1) Après avoir installé Maven, rendez-vous avec la console dans le dossier Projet 1
+2) tapez dans la console mvn package pour compiler le projet
+3) Dans Projet 1/ target taper depuis la console java -jar log4j2-1.0-jar-with-dependencies.jar
 
     Un fichier de config _config.properties_ est également disponible pour :
         - définir la taille par défault de la combinaison à trouver
