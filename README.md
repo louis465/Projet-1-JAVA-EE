@@ -16,13 +16,15 @@ L'unique prérequis est de posséder un IDE Java type IntelliJ, Eclipse ou Netbe
 
 ## **Installation**
 
-Pas d'installation requise, uniquement un IDE.
+Installation de Maven pour la compilation du projet
 
 ## **Démarrage**
 
-1) Après avoir installé Maven, rendez-vous avec la console dans le dossier Projet 1
-2) tapez dans la console mvn package pour compiler le projet
-3) Dans Projet 1/ target taper depuis la console java -jar log4j2-1.0-jar-with-dependencies.jar
+1) Rendez-vous avec la console de votre ordinateur dans le dossier Projet Java/Projet 1
+2) Dans la console, tapez "mvn package" pour compiler le projet
+3) Rendez-vous ensuite avec la console de votre ordinateur dans Projet Java/Projet 1/target 
+4) Dans la console, tapez ensuite "java -jar Logical_Game-1.0-jar-with-dependencies.jar"
+5) Le programme se lance 
 
     Un fichier de config _config.properties_ est également disponible pour :
         - définir la taille par défault de la combinaison à trouver

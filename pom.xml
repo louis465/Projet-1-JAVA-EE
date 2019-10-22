@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>java</groupId>
-    <artifactId>log4j2</artifactId>
+    <artifactId>Logical_Game</artifactId>
     <version>1.0</version>
 
     <build>
