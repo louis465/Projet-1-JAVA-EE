@@ -2,7 +2,7 @@
 <Configuration status="warn">
 
     <Properties>
-        <Property name="basePath">C:\Users\louis\Desktop\Codage\Parcours Java\Projet Java\Projet 1\logs</Property>
+        <Property name="basePath">logs</Property>
     </Properties>
 
     <Appenders>
@@ -23,9 +23,9 @@
         <Logger name="logs" level="INFO" additivity="true">
             <appender-ref ref="file" />
         </Logger>
-      <!-- <Root level="INFO" additivity="false">
-            <appender-ref ref="console" />
+      <Root level="INFO" additivity="false">
+           <!-- <appender-ref ref="console" /> -->
             <appender-ref ref="file" />
-        </Root> -->
+        </Root>
     </Loggers>
 </Configuration>
